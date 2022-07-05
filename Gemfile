@@ -60,3 +60,16 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+# ログイン関連
+gem 'devise'
+# binding.pry使うために
+gem 'pry-rails'
+
+gem "gon"
+# ImageMagick用
+gem 'mini_magick'
+# 画像サイズ調整用
+gem 'image_processing', '~> 1.2'
+# 画像関係
+gem 'carrierwave'

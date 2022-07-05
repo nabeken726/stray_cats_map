@@ -1,0 +1,83 @@
+<!-- headerの部分テンプレート -->
+<header>
+
+  <!-- ナビゲーションバーのレイアウト -->
+  <nav class ="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #FF9999;">
+    <div class="container-fluid">
+      <!-- 店名ロゴの表示-->
+      <a class="navbar-brand" href="/" style="font-family: cursive;">
+        <span><i class="fa-solid fa-paw"></i>Stray Cat's MAP<i class="fa-solid fa-paw"></i></span>
+      </a>
+      <!-- ナビゲーション要素の追加 -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDrapdown"
+        aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <!-- ユーザーがログインしている＆会員の場合に表示 -->
+          <% if user_signed_in? %>
+            <li>
+                <!--現在ログインしているユーザーのマイページ。-->
+                <%= link_to public_show_path(current_user.id), class: 'nav-link text-dark' do %>
+                  <i class="fa-regular fa-user"></i>
+                  マイページ
+                <% end %>
+              </li>
+            <li>
+              <%= link_to  public_posts_path, class: 'nav-link text-dark' do %>
+                <i class="fa-solid fa-map-location-dot"></i>
+                地図へ行く
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "#", class: 'nav-link text-dark' do %>
+                <i class="fa-solid fa-cat"></i>
+                見た猫一覧
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                <i class="fas fa-sign-out-alt"></i>
+                ログアウト
+              <% end %>
+            </li>
+          <!-- 未ログインの場合に表示 -->
+          <% else %>
+            <li>
+              <%= link_to about_path, class: 'nav-link text-dark' do %>
+              <i class="fa-solid fa-shop" style="margin-right: 5px;"></i>
+              About
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "#", class: 'nav-link text-dark' do %>
+                <i class="fa-solid fa-book-open" style="margin-right: 5px;"></i>
+                <i class="fa-thin fa-cat-space"></i>
+                猫たち
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
+                <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i>
+                新規登録
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
+                <i class="fa-solid fa-right-to-bracket" style="margin-right: 5px;"></i>
+                ログイン
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>
+<main>
+  <div class="container" style="margin-top: 60px;"></div>
+</main>
