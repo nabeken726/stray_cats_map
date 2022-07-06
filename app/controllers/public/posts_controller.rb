@@ -5,6 +5,10 @@ class Public::PostsController < ApplicationController
     # @genres = Genre.all
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def new
     @post = Post.new
   end
@@ -23,7 +27,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:product).permit(:title,:introduction,:post_image_url)
+    params.require(:product).permit(:title,:introduction,:image)
   end
 
 

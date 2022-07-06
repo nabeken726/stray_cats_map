@@ -4,15 +4,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one_attached :user_image_url
+  has_one_attached :image
+  
+  has_many :user_posts, dependent: :destroy
 
   # User画像のないときの処理
+  # class: "rounded-circle", size: "150x150"のクラスを当てる方法
   def get_image
-    unless user_image_url.attached?
+    unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
-      user_image_url.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      image.attach(io: File.open(file_path), filename: 'default-image.jpg')
     end
-    user_image_url
+    image
   end
 
 end

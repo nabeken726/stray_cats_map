@@ -1,6 +1,6 @@
 <!--部分テンプレートで使うようにする-->
 <div class="container">
-  <%= form_with model: @post, url: new_public_post_path do |f| %>
+  <%= form_with model: @post, url: public_posts_path do |f| %>
   <div class="row">
     <div class="col-md-3" style="margin-top: 50px; text-align: center;">
       <h2>猫を投稿</h2>
@@ -11,7 +11,7 @@
           <tr>
             <th><%= f.label :猫の画像 %></th>
             <th>
-                <%= f.file_field :post_image_url %>
+                <%= f.file_field :image %>
             </th>
           </tr>
           <tr>

@@ -63,7 +63,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_sign_in_path_for(resource)
   #     public_show_path
   # end
-  
+
   # configure_permitted_parametersを呼ぶ
   before_action :configure_permitted_parameters
 
@@ -71,7 +71,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   protected
   # devise用のストロングパラメーター
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:user_image_url])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:image])
   end
 
 

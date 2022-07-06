@@ -8,11 +8,7 @@
       <table class="table table-inverse">
         <th>プロフィールアイコン</th>
           <td>
-            プロフィールアイコンを載せる
-            <img src=<%= @user.user_image_url %> class = "icon_image">
-
-            <%= image_tag @user.user_image_url.variant(resize:'200x200'),class: 'icon_image' %>
-
+            <%= image_tag @user.get_image,class: "rounded-circle", size: "150x150" %>
           </td>
         </tr>
         <th>ニックネーム</th>

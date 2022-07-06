@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   get 'public/infos/hogo', as: :hogo
   get 'public/infos/nora', as: :nora
+  
 
   # 管理者側
   namespace :admin do

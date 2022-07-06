@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2022_07_05_012345) do
     t.integer "user_id", null: false
     t.string "title", null: false
     t.text "introduction", null: false
-    t.text "post_image_url", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -87,7 +86,6 @@ ActiveRecord::Schema.define(version: 2022_07_05_012345) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.text "user_image_url", default: "", null: false
     t.boolean "is_deleted", default: false, null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
