@@ -1,0 +1,25 @@
+<!--コメント部分テンプレート-->
+<table>
+  <div>
+<% book.book_comments.each do |book_comment| %>
+  <tr>
+    <td><%= link_to(book.user) do %>
+        <%= image_tag book_comment.user.get_profile_image, size:"100x100" %><br>
+        <%= book_comment.user.name %></td>
+    <td><%= book_comment.comment %></td>
+  <% end %>
+      </td>
+  <% if book.user == current_user %>
+    <td ><%= link_to "Destroy", book_book_comment_path(book_comment.book_id, book_comment.id), method: :delete, class: "btn btn-sm btn-danger", remote: true %></td>
+  <% end %>
+  <% end %>
+  </td>
+  </div>
+</table>
+<div class="form-group">
+  <!--local: trueをfalseに変更-->
+<%= form_with model: [book, book_comment],local: false do |f| %>
+<%= f.text_area :comment, rows: '5', placeholder: "" %><br>
+<%= f.submit "送信する" %>
+<% end %>
+</div>

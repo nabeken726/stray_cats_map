@@ -1,15 +1,18 @@
 class Public::PostsController < ApplicationController
+  # ログインしていないとshow,create 使用不可
+  # before_action :authenticate_user!, only: [:show, :create]
 
   def index
-    @post = Post.all
+    @posts = Post.all
     # @genres = Genre.all
   end
 
   def show
     @post = Post.find(params[:id])
+    # コメント用
+    @comments = @post.comments
+    @comment = current_user.comments.new
   end
-
-
 
   def edit
     @post = Post.find(params[:id])

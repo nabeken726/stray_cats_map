@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :image
   
+  
   has_many :user_posts, dependent: :destroy
 
   # User画像のないときの処理
