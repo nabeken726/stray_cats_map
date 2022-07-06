@@ -1,24 +1,28 @@
 class Public::CommentsController < ApplicationController
 
   def create
-    @comment = current_user.comments.new(comment_params)
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.new(comment_params)
+    @comment.user_id = current_user.id
     if @comment.save
-      # コメント送信後は、一つ前のページへリダイレクトさせる。
-      redirect_back(fallback_location: root_path)
+      redirect_to request.referer
     else
-      redirect_back(fallback_location: root_path)
+      @post_new = Post.new
+      @comments = @post.comments
+      redirect_to public_posts_path
     end
   end
 
   def destroy
-  @comment = @post.comments.find(params[:id])
-  @comment.destroy
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to request.referer
   end
 
   private
-  def comment_params
-    #formにてpost_idパラメータを送信して、コメントへpost_idを格納するようにする必要がある。
-    params.require(:comment).permit(:comment, :post_id)
-  end
 
+  def comment_params
+    params.require(:comment).permit(:comment)
+  end
 end
