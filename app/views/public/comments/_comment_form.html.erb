@@ -1,25 +1,26 @@
-<!--コメント部分テンプレート-->
+<!--コメント機能-->
+  <!--publicを記入してネストしている変数をとる-->
+  <%= form_with model: [:public,@post,@comment] do |f| %>
+    <%= f.text_area :comment, rows: '5',size: "40x5" %>
+    <%= f.submit '送信', class: "btn-sm btn-primary" %>
+  <% end %>
+
 <table>
-  <div>
-<% post.comment.each do |comment| %>
-  <tr>
-    <td><%= link_to(post.user) do %>
-        <%= image_tag comment.user.get_image, size:"100x100" %><br>
-        <%= comment.user.name %></td>
-    <td><%= comment.comment %></td>
-  <% end %>
-      </td>
-  <% if post.user == current_user %>
-    <td ><%= link_to "Destroy", public_post_comment_path(comment.post_id, comment.id), method: :delete, class: "btn btn-sm btn-danger", remote: true %></td>
-  <% end %>
-  <% end %>
-  </td>
-  </div>
+  <thead>
+    <tr>
+      <!--投稿者の画像も入れるようにする-->
+      <th>コメント投稿者</th>
+      <th>コメント内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <!--コメント投稿者の名前をとってきたい-->
+        <td><%= comment.user.name %></td>
+        <td><%= comment.comment %></td>
+        <td><%= link_to "削除", public_post_comment_path(@post, comment), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-<div class="form-group">
-  <!--local: trueをfalseに変更-->
-<%= form_with model: [post, comment],local: false do |f| %>
-<%= f.text_area :comment, rows: '5', placeholder: "" %><br>
-<%= f.submit "送信する" %>
-<% end %>
-</div>

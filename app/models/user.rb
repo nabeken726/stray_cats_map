@@ -8,7 +8,7 @@ class User < ApplicationRecord
   
   
   has_many :user_posts, dependent: :destroy
-
+  
   # User画像のないときの処理
   # class: "rounded-circle", size: "150x150"のクラスを当てる方法
   def get_image

@@ -8,6 +8,10 @@ class Post < ApplicationRecord
   belongs_to :user
 
   has_many :user_posts, dependent: :destroy
-  has_many :comments
+  has_many :comments,   dependent: :destroy
 
+  # 名前はfavoritedにしてメソッドを作る
+  def favorited_by?(user)
+    comments.exists?(user_id: user.id)
+  end
 end
