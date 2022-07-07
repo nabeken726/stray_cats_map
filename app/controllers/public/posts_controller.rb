@@ -10,8 +10,6 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     # コメント用
     @comment = Comment.new
-    puts "hogehoge"
-    pp @comment
     @comments = @post.comments
   end
 

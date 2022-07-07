@@ -9,7 +9,8 @@ class Post < ApplicationRecord
 
   has_many :user_posts, dependent: :destroy
   has_many :comments,   dependent: :destroy
-
+  
+  # バリデーション空欄処理だけ
   validates :title,presence:true
   validates :introduction,presence:true
   validates :genre,presence:true
@@ -17,6 +18,6 @@ class Post < ApplicationRecord
 
   # 名前はfavoritedにしてメソッドを作る
   def favorited_by?(user)
-    comments.exists?(user_id: user.id)
+    comments.where.not(cute: nil).exists?(user_id: user.id)
   end
 end

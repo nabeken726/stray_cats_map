@@ -1,4 +1,4 @@
-<h1>MAPで使用するページ</h1>
+<h4>MAPで使用するページ</h4>
 <div class="container">
   <div class="row">
     <div class="col-md-3" style="text-align: center; margin-top: 50px;">
@@ -17,7 +17,7 @@
         <tbody>
           <% @posts.each do |post| %>
           <tr>
-            <td><%= post.id %></td>
+            <td><%= image_tag post.image,:size =>'100x100' %></td>
             <td><%= link_to post.title, public_post_path(post) %></td>
             <td><%= post.introduction %></td>
             <td><%= post.genre.genre %></td>
@@ -26,21 +26,5 @@
       </table>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-md-12" style="text-align: center;">
-
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="pagination" style="justify-content: center; margin-top: 30px;">
-      </div>
-    </div>
-  </div>
-</div>
 
 
