@@ -19,7 +19,8 @@ Rails.application.routes.draw do
 
   get 'public/infos/hogo', as: :hogo
   get 'public/infos/nora', as: :nora
-  
+  # 仮ルーティングMAP用
+  get 'public/posts/map'
 
   # 管理者側
   namespace :admin do

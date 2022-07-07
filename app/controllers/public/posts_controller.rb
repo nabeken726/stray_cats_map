@@ -4,7 +4,6 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    # @genres = Genre.all
   end
 
   def show
@@ -36,7 +35,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    # @post.genre_id = params[:post][:genre_id]
+    @post.genre_id = params[:post][:genre_id]
       if @post.save
         redirect_to public_post_path(@post)
       else
@@ -53,7 +52,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title,:introduction,:image,:comment)
+    params.require(:post).permit(:title,:introduction,:image,:comment,:genre_id)
   end
 
 

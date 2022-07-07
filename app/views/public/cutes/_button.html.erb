@@ -1,0 +1,28 @@
+<!--見たボタンとかわいいボタンの部分テンプレート-->
+<% if @post.favorited_by?(current_user) %>
+    <p>
+      <%= link_to public_post_cutes_path(@post), method: :delete do %>
+        <i class="fa-brands fa-gratipay"></i><%= @post.comments.count %> かわいい
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to public_post_cute_path(@post), method: :post do %>
+        <i class="fa-brands fa-gratipay"></i><%= @post.comments.count %> かわいい
+      <% end %>
+    </p>
+  <% end %>
+
+<% if @post.favorited_by?(current_user) %>
+　　<p>
+      <%= link_to public_post_looks_path(@post), method: :delete do %>
+        <i class="fa-solid fa-eye"></i><%= @post.comments.count %> 見た
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to public_post_cute_path(@post), method: :post do %>
+        <i class="fa-solid fa-eye"></i><%= @post.comments.count %> 見た
+      <% end %>
+    </p>
+<% end %>

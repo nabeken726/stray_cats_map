@@ -33,13 +33,20 @@
             </td>
             <td></td>
           </tr>
+          <tr>
+          <th><%= f.label :ジャンル %></th>
+          <td>
+            <!--ジャンルから持ってきてジャンルを選択する-->
+            <%= f.collection_select(:genre_id, Genre.all, :id, :genre, prompt: "--選択してください--")  %>
+          </td>
+        </tr>
         </div>
       </table>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12" style="text-align: center;">
-      <%= f.submit "編集内容を保存" %>
+      <%= f.submit "投稿" %>
       <% end %>
     </div>
   </div>

@@ -1,4 +1,4 @@
-<h1>JSONで実装できなかった時に投稿詳細を見るページ</h1>
+<h4>JSONで実装できなかった時に投稿詳細を見るページ</h4>
 <div class="container">
   <div class="row">
     <div class="col-md-3" style="margin-top: 50px; text-align: center;">
@@ -17,6 +17,10 @@
         <tr>
           <th>内容</th>
           <td><%= @post.introduction %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @post.genre.genre %></td>
         </tr>
       </table>
     </div>
@@ -54,7 +58,7 @@
     </p>
 <% end %>
     </div>
-    
+
     <div class="col-md-12" style="margin-top: 50px; text-align: center;">
 
       <!--コメント機能-->
@@ -81,12 +85,12 @@
       </tr>
     <% end %>
   </tbody>
-  
+
 </table>
     </div>
-    
+
   </div>
-  
+
 </div>
 
 

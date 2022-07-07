@@ -18,18 +18,18 @@
           <% @posts.each do |post| %>
           <tr>
             <td><%= post.id %></td>
-            <td><%= post.title %></td>
+            <td><%= link_to post.title, public_post_path(post) %></td>
             <td><%= post.introduction %></td>
-            <td></td>
+            <td><%= post.genre.genre %></td>
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-md-12" style="text-align: center;">
-      
+
     </div>
   </div>
 </div>

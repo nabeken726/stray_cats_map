@@ -10,6 +10,11 @@ class Post < ApplicationRecord
   has_many :user_posts, dependent: :destroy
   has_many :comments,   dependent: :destroy
 
+  validates :title,presence:true
+  validates :introduction,presence:true
+  validates :genre,presence:true
+  validates :image,presence:true
+
   # 名前はfavoritedにしてメソッドを作る
   def favorited_by?(user)
     comments.exists?(user_id: user.id)
