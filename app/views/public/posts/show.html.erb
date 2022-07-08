@@ -61,7 +61,7 @@
 
     <div class="col-md-12" style="margin-top: 50px; text-align: center;">
 
-      <!--コメント機能-->
+  <!--コメント機能-->
   <!--publicを記入してネストしている変数をとる-->
   <%= form_with model: [:public,@post,@comment] do |f| %>
     <%= f.text_area :comment, size: "40x5" %>

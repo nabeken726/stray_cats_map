@@ -10,6 +10,12 @@ class User < ApplicationRecord
   has_many :user_posts, dependent: :destroy
   has_many :comments,   dependent: :destroy
 
+  # 退会したユーザーがログインできないように
+  def active_for_authentication?
+    super && ( is_deleted == false )
+  end
+
+
   # User画像のないときの処理
   # class: "rounded-circle", size: "150x150"のクラスを当てる方法
   def get_image

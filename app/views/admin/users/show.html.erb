@@ -6,11 +6,15 @@
     <div class="col-md-6" style="margin-top: 50px;">
     <table class="table table-inverse">
       <tr>
+        <th>プロフィールアイコン</th>
+        <td><%= image_tag @user.get_image,class: "rounded-circle", size: "150x150" %></td>
+      </tr>
+      <tr>
         <th>会員ID</th>
         <td><%= @user.id %></td>
       </tr>
       <tr>
-        <th>氏名</th>
+        <th>ニックネーム</th>
         <td><%= @user.name %></td>
       </tr>
       <tr>
