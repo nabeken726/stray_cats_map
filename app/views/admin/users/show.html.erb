@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="text-align: center; margin-top: 50px;">
+      <h2><%= @user.name %>さん<br>の会員詳細</h2>
+    </div>
+    <div class="col-md-6" style="margin-top: 50px;">
+    <table class="table table-inverse">
+      <tr>
+        <th>会員ID</th>
+        <td><%= @user.id %></td>
+      </tr>
+      <tr>
+        <th>氏名</th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <th>会員ステータス</th>
+        <!--ステータスの記述を行う。-->
+        <% if @user.is_deleted == false %>
+            <td>有効</td>
+        <% else %>
+            <td>退会</td>
+        <% end %>
+      </tr>
+    </table>
+    </div>
+    <div class="col-md-3" style="margin-top: 50px;">
+      <table>
+        <tr>
+          <td>
+            <%= link_to "編集",edit_admin_user_path(@user),class: 'btn btn-success' %>
+          </td>
+        </tr>
+        <br>
+        <tr>
+          <td>
+          <%= link_to "会員一覧", admin_users_path, class: 'btn btn-primary' %>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>

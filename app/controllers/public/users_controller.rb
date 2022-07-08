@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
-
+  # User関連はUseのみにするように
+  before_action :authenticate_user!
   def index
     @users = User.all
   end
