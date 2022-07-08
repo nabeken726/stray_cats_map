@@ -24,7 +24,6 @@ Rails.application.routes.draw do
 
   # 管理者側
   namespace :admin do
-      root to: 'homes#top'
       resources :homes, only: [:top]
       resources :posts
       #genresのnew,showを除くルーティング自動生成

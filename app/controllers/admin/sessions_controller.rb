@@ -27,12 +27,12 @@ class Admin::SessionsController < Devise::SessionsController
 
    protected
   # 管理者ログイン後の遷移先
-  # def after_sign_in_path_for(resource)
-  #   admin_root_path
-  # end
+  def after_sign_in_path_for(resource)
+    admin_genres_path
+  end
   # 管理者ログアウト後の遷移先
-  # def after_sign_out_path_for(resource)
-  #   new_admin_session_path
-  # end
+  def after_sign_out_path_for(resource)
+    about_path
+  end
 
 end

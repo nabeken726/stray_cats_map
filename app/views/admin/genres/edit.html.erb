@@ -6,7 +6,7 @@
     <div class="col-md-6" style="margin-top: 50px; text-align: center;">
       <%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch, local: true do |f| %>
         <h4>ジャンル名</h4>
-        <%= f.text_area :genre %>
+        <%= f.text_field :genre %>
         <br>
         <br>
         <%= f.submit '変更を保存', class: 'btn btn-success' %>

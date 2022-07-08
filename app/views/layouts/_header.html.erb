@@ -43,6 +43,32 @@
                 ログアウト
               <% end %>
             </li>
+            <!-- ユーザーがログインしているかつ管理者の場合に表示 -->
+          <% elsif admin_signed_in? %>
+            <li>
+              <%= link_to "#", class: 'nav-link text-dark' do %>
+                <i class="fa-solid fa-utensils"></i>
+                会員一覧
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "#", class: 'nav-link text-dark' do %>
+                <i class="fa-solid fa-users"></i>
+                地図へ行く
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
+              <i class="fa-solid fa-tags"></i>
+                ジャンル一覧
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                <i class="fa-solid fa-right-from-bracket"></i>
+                ログアウト
+              <% end %>
+            </li>
           <!-- 未ログインの場合に表示 -->
           <% else %>
             <li>
