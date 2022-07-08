@@ -19,6 +19,12 @@ Rails.application.routes.draw do
 
   get 'public/infos/hogo', as: :hogo
   get 'public/infos/nora', as: :nora
+
+  # 退会確認画面
+  get 'public/users/:id/unsubscribe' => 'public/users#unsubscribe', as: 'unsubscribe'
+  # 論理削除用のルーティング
+  patch 'public/users/:id/withdrawal' => 'public/users#withdrawal', as: 'withdrawal'
+
   # 仮ルーティングMAP用
   get 'public/posts/map'
 

@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   # ログインしていないとshow,create 使用不可
-  # before_action :authenticate_user!, only: [:show, :create]
+  before_action :authenticate_user!, only: [:show, :create]
 
   def index
     @posts = Post.all
