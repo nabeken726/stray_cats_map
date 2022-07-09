@@ -71,6 +71,7 @@ let map
 let geocoder
 // 下の1行を追加
 const display = document.getElementById('display')
+let marker
 
 function initMap(){
   geocoder = new google.maps.Geocoder()
@@ -80,10 +81,10 @@ function initMap(){
     zoom: 12,
   });
   // ピンの初期位置
-  marker = new google.maps.Marker({
-    position:  {lat: 35.6761919, lng:139.6503106},
-    map: map
-  });
+  // marker = new google.maps.Marker({
+  //   position:  {lat: 35.6761919, lng:139.6503106},
+  //   map: map
+  // });
 }
 
 function codeAddress(){
@@ -91,13 +92,18 @@ function codeAddress(){
 
   geocoder.geocode( { 'address': inputAddress}, function(results, status) {
     if (status == 'OK') {
+
+      if (marker != null) {
+        marker.setMap(null);
+      }
+      marker = null;
+
       map.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
+      marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location
       });
       display.textContent = "検索結果：" + results[0].geometry.location
-      console.log(results[0].geometry.location.lat(), results[0].geometry.location.lng())
       $('#post_latitude').val(results[0].geometry.location.lat())
       $('#post_longitude').val(results[0].geometry.location.lng())
     } else {

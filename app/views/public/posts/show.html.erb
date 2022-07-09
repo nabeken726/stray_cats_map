@@ -61,38 +61,34 @@
     </div>
 
     <div class="col-md-12" style="margin-top: 50px; text-align: center;">
-
-  <!--コメント機能-->
-  <!--publicを記入してネストしている変数をとる-->
-  <%= form_with model: [:public,@post,@comment] do |f| %>
-    <%= f.text_area :comment, size: "40x5" %>
-    <%= f.submit '送信', class: "btn-sm btn-primary" %>
-  <% end %>
-
-<table class="table table-inverse">
-  <thead>
-    <tr>
-      <th>コメント投稿者</th>
-      <th>コメント内容</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @comments.each do |comment| %>
-      <tr>
-        <!--コメント投稿者の名前をとってきたい-->
-        <td><%= comment.user.name %></td>
-        <td><%= comment.comment %></td>
-        <td><%= link_to "削除", public_post_comment_path(@post, comment), method: :delete, class: "btn btn-sm btn-danger" %></td>
-      </tr>
+    <!--コメント機能-->
+    <!--publicを記入してネストしている変数をとる-->
+    <%= form_with model: [:public,@post,@comment] do |f| %>
+      <%= f.text_area :comment, size: "40x5" %>
+      <%= f.submit '送信', class: "btn-sm btn-primary" %>
     <% end %>
-  </tbody>
 
-</table>
+    <table class="table table-inverse">
+      <thead>
+        <tr>
+          <th>コメント投稿者</th>
+          <th>コメント内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+            <!--コメント投稿者の名前をとってきたい-->
+            <td><%= comment.user.name %></td>
+            <td><%= comment.comment %></td>
+            <td><%= link_to "削除", public_post_comment_path(@post, comment), method: :delete, class: "btn btn-sm btn-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
     </div>
-
   </div>
 
-</div>
 
 <style>
 #map{
@@ -103,7 +99,7 @@
 
 <script>
 function initMap(){
-  // latingで緯度経度を定義
+  // latlngで緯度経度を定義
   let latlng = {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}
   let map = new google.maps.Map(document.getElementById('map'), {
     center: latlng,
