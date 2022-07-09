@@ -1,13 +1,19 @@
-<!--部分テンプレートで使うようにする-->
+
 <div class="container">
   <%= form_with model: @post, url: public_posts_path do |f| %>
   <div class="row">
-    <div class="col-md-3" style="margin-top: 50px; text-align: center;">
+    <div class="col-md-3" style="text-align: center;">
       <h2>猫を投稿</h2>
     </div>
-    <div class="col-md-8" style="margin-top: 50px;">
+    <div class="col-md-8">
+      <h2>map</h2>
+
+      <input id="address" type="textbox" value="東京都">
+      <input type="button" value="行ってみる" onclick="codeAddress()">
+      <!-- 下の1行を追加 -->
+      <div id="display">ここに緯度経度が出ます。</div>
+      <div id="map"></div>
       <table class="table">
-        <div class="field">
           <tr>
             <th><%= f.label :猫の画像 %></th>
             <th>
@@ -22,8 +28,6 @@
               <%= f.text_field :title %>
             </td>
           </tr>
-        </div>
-        <div class="field">
           <tr>
             <th>
               <%= f.label :内容 %>
@@ -40,14 +44,67 @@
             <%= f.collection_select(:genre_id, Genre.all, :id, :genre, prompt: "--選択してください--")  %>
           </td>
         </tr>
-        </div>
       </table>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12" style="text-align: center;">
+      <!--hidden_fieldで緯度経度を入れてあげる-->
+      <%= f.hidden_field :latitude, value: '' %>
+      <%= f.hidden_field :longitude, value: '' %>
       <%= f.submit "投稿" %>
       <% end %>
     </div>
   </div>
 </div>
+
+<!--地図の大きさ-->
+<style>
+#map {
+  height: 250px;
+  width: auto;
+}
+</style>
+
+<script>
+let map
+let geocoder
+// 下の1行を追加
+const display = document.getElementById('display')
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+  // 初期表示位置
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 35.6761919, lng:139.6503106},
+    zoom: 12,
+  });
+  // ピンの初期位置
+  marker = new google.maps.Marker({
+    position:  {lat: 35.6761919, lng:139.6503106},
+    map: map
+  });
+}
+
+function codeAddress(){
+  let inputAddress = document.getElementById('address').value;
+
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+      display.textContent = "検索結果：" + results[0].geometry.location
+      console.log(results[0].geometry.location.lat(), results[0].geometry.location.lng())
+      $('#post_latitude').val(results[0].geometry.location.lat())
+      $('#post_longitude').val(results[0].geometry.location.lng())
+    } else {
+      alert('該当する結果がありませんでした：' + status);
+    }
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap" async defer></script>
+

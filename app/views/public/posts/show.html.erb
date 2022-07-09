@@ -1,10 +1,11 @@
-<h4>JSONで実装できなかった時に投稿詳細を見るページ</h4>
+
 <div class="container">
   <div class="row">
     <div class="col-md-3" style="margin-top: 50px; text-align: center;">
       <h2>投稿詳細</h2>
     </div>
     <div class="col-md-6" style="margin-top: 50px; text-align: center;">
+      <div id="map"></div>
       <table class="table table-inverse">
         <th>画像</th>
           <td>
@@ -93,5 +94,25 @@
 
 </div>
 
+<style>
+#map{
+  height: 250px;
+  width: auto;
+}
+</style>
 
-
+<script>
+function initMap(){
+  // latingで緯度経度を定義
+  let latlng = {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}
+  let map = new google.maps.Map(document.getElementById('map'), {
+    center: latlng,
+    zoom: 15
+  });
+  let marker = new google.maps.Marker({
+                     position: latlng,
+                     map: map
+                   });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap" async defer></script>

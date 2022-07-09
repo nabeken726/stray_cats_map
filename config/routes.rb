@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   # 仮ルーティングMAP用
   get 'public/posts/map'
-
+  get 'public/posts/my_index'
   # 管理者側
   namespace :admin do
       resources :homes, only: [:top]
