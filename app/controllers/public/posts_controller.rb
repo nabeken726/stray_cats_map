@@ -3,6 +3,8 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :create,:my_index]
   # 自分の投稿
   def my_index
+    @user = current_user
+    @posts = Post.where(user_id: current_user.id)
   end
 
   def index

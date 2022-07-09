@@ -15,6 +15,8 @@ class Post < ApplicationRecord
   validates :introduction,presence:true
   validates :genre,presence:true
   validates :image,presence:true
+  validates :latitude,presence:true
+  validates :longitude,presence:true
 
   # 名前はfavoritedにしてメソッドを作る
   def favorited_by?(user)

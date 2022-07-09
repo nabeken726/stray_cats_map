@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row">
     <div class="col-md-3" style="margin-top: 50px; text-align: center;">
@@ -25,51 +24,13 @@
         </tr>
       </table>
     </div>
-
     <div class="col-md-3" style="margin-top: 50px; text-align: center;">
-      <% if @post.user == current_user %>
       登録情報
-      <%= link_to "編集",edit_public_post_path,class: 'btn btn-success' %>
-      <%= link_to '削除', public_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？', class: 'btn-sm btn-danger' }, class: "btn btn-sm btn-danger"%>
-      <% end %>
+      <br>
+      <%= link_to '削除', admin_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？', class: 'btn-sm btn-danger' }, class: "btn btn-sm btn-danger"%>
 
-      <% if @post.favorited_by?(current_user) %>
-        <p>
-        <%= link_to public_post_cute_path(@post), method: :delete do %>
-          <i class="fa-brands fa-gratipay"></i><%= @post.comments.where.not(cute: nil).count %> かわいい
-        <% end %>
-        </p>
-      <% else %>
-        <p>
-        <%= link_to public_post_cutes_path(@post), method: :post do %>
-          <i class="fa-brands fa-gratipay"></i><%= @post.comments.where.not(cute: nil).count %> かわいい
-        <% end %>
-        </p>
-      <% end %>
-
-      <% if @post.favorited_by?(current_user) %>
-　　    <p>
-      <%= link_to public_post_looks_path(@post), method: :delete do %>
-        <i class="fa-solid fa-eye"></i><%= @post.comments.count %> 見た
-      <% end %>
-        </p>
-    <% else %>
-        <p>
-      <%= link_to public_post_cute_path(@post), method: :post do %>
-        <i class="fa-solid fa-eye"></i><%= @post.comments.count %> 見た
-      <% end %>
-        </p>
-    <% end %>
-    </div>
 
     <div class="col-md-12" style="margin-top: 50px; text-align: center;">
-    <!--コメント機能-->
-    <!--publicを記入してネストしている変数をとる-->
-    <%= form_with model: [:public,@post,@comment] do |f| %>
-      <%= f.text_area :comment, size: "40x5" %>
-      <%= f.submit '送信', class: "btn-sm btn-primary" %>
-    <% end %>
-
     <table class="table table-inverse">
       <thead>
         <tr>
@@ -83,10 +44,7 @@
             <!--コメント投稿者の名前をとってきたい-->
             <td><%= comment.user.name %></td>
             <td><%= comment.comment %></td>
-            <!--今ログインしているUserしか削除ボタンを表示させない。-->
-            <% if comment.user == current_user %>
             <td><%= link_to "削除", public_post_comment_path(@post, comment), method: :delete, class: "btn btn-sm btn-danger" %></td>
-            <% end %>
           </tr>
         <% end %>
       </tbody>

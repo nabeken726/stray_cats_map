@@ -1,3 +1,5 @@
+<h4>MAP</h4>
+<p>みんながみた猫の位置が表示されます。</p>
 <div id="map"></div>
 <style>
 #map{
@@ -12,15 +14,21 @@ function initMap(){
   let latlng = {lat: 35.6761919, lng:139.6503106}
   let map = new google.maps.Map(document.getElementById('map'), {
     center: latlng,
-    zoom: 15
+    zoom: 10
   });
   let markers = new Array();
+  // eachでpostを回してあげる
   <% @posts.each_with_index do |post, index| %>
+  // マーカーのための記述
     markers[<%= index %>] = new google.maps.Marker({
+                      // 場所を緯度経度にしてあげる
                        position: {lat: <%= post.latitude %>, lng: <%= post.longitude %>},
                        map: map
                      });
-    markerInfo(markers[<%= index %>], "<%= sanitize(simple_format(post.introduction).gsub(/[\r\n]/,""), tags: %w(br p)) %>");
+    // マーカーの吹き出しのための記述
+    markerInfo(markers[<%= index %>],
+    // 文章構成のための記述
+    "<%= sanitize(simple_format(post.introduction).gsub(/[\r\n]/,""), tags: %w(br p)) %>");
   <% end %>
 }
 

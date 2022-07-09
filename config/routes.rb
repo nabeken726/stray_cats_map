@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   # 管理者側
   namespace :admin do
       resources :homes, only: [:top]
-      resources :posts
+      resources :posts, only: [:index, :show, :edit, :update,:destroy]
       #genresのnew,showを除くルーティング自動生成
       resources :genres, except: [:new, :show]
       resources :users, only: [:index, :show, :edit, :update]

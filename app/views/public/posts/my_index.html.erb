@@ -1,1 +1,33 @@
-<h4>User個人の投稿一覧ページ</h4>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="text-align: center; margin-top: 50px;">
+      <h2><%= @user.name %>さん<br>の投稿一覧</h2>
+    </div>
+    <div class="col-md-8" style="text-align: center; margin-top: 50px;">
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>画像</th>
+            <th>タイトル</th>
+            <th>説明</th>
+            <th>ジャンル</th>
+          </tr>
+        </thead>
+        <tbody>
+        <!--投稿がない場合の分岐-->
+        <% if  @posts.present? %>
+          <% @posts.each do |post| %>
+          <tr>
+            <td><%= image_tag post.image,:size =>'100x100' %></td>
+            <td><%= link_to post.title, public_post_path(post) %></td>
+            <td><%= post.introduction %></td>
+            <td><%= post.genre.genre %></td>
+            <% else %>
+            まだ投稿はありません
+          <% end %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>

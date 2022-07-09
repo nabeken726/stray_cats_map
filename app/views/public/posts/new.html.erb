@@ -6,7 +6,7 @@
       <h2>猫を投稿</h2>
     </div>
     <div class="col-md-8">
-      <h2>map</h2>
+      <h2>MAP</h2>
 
       <input id="address" type="textbox" value="東京都">
       <input type="button" value="行ってみる" onclick="codeAddress()">
@@ -16,25 +16,15 @@
       <table class="table">
           <tr>
             <th><%= f.label :猫の画像 %></th>
-            <th>
-                <%= f.file_field :image %>
-            </th>
+            <th><%= f.file_field :image %></th>
           </tr>
           <tr>
-            <th>
-              <%= f.label :タイトル %>
-            </th>
-            <td>
-              <%= f.text_field :title %>
-            </td>
+            <th><%= f.label :タイトル %></th>
+            <td><%= f.text_field :title %></td>
           </tr>
           <tr>
-            <th>
-              <%= f.label :内容 %>
-            </th>
-            <td>
-              <%= f.text_area :introduction %>
-            </td>
+            <th><%= f.label :内容 %></th>
+            <td><%= f.text_area :introduction %></td>
             <td></td>
           </tr>
           <tr>
@@ -52,7 +42,7 @@
       <!--hidden_fieldで緯度経度を入れてあげる-->
       <%= f.hidden_field :latitude, value: '' %>
       <%= f.hidden_field :longitude, value: '' %>
-      <%= f.submit "投稿" %>
+      <%= f.submit "投稿",class: 'btn btn-success' %>
       <% end %>
     </div>
   </div>
@@ -69,7 +59,6 @@
 <script>
 let map
 let geocoder
-// 下の1行を追加
 const display = document.getElementById('display')
 let marker
 
@@ -92,7 +81,7 @@ function codeAddress(){
 
   geocoder.geocode( { 'address': inputAddress}, function(results, status) {
     if (status == 'OK') {
-
+      // markerが移動した時に空になるよう
       if (marker != null) {
         marker.setMap(null);
       }
@@ -104,6 +93,7 @@ function codeAddress(){
           position: results[0].geometry.location
       });
       display.textContent = "検索結果：" + results[0].geometry.location
+      // 検索結果からlatlngを入れてあげる
       $('#post_latitude').val(results[0].geometry.location.lat())
       $('#post_longitude').val(results[0].geometry.location.lng())
     } else {

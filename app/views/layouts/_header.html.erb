@@ -26,9 +26,15 @@
                 <% end %>
               </li>
             <li>
-              <%= link_to  new_public_post_path, class: 'nav-link text-dark' do %>
+              <%= link_to  public_posts_map_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-map-location-dot"></i>
                 地図へ行く
+              <% end %>
+            </li>
+            <li>
+              <%= link_to  new_public_post_path, class: 'nav-link text-dark' do %>
+                <i class="fa-solid fa-paper-plane"></i>
+                投稿する
               <% end %>
             </li>
             <li>
@@ -47,13 +53,13 @@
           <% elsif admin_signed_in? %>
             <li>
               <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
-                <i class="fa-solid fa-utensils"></i>
+                <i class="fa-solid fa-users"></i>
                 会員一覧
               <% end %>
             </li>
             <li>
               <%= link_to public_posts_map_path, class: 'nav-link text-dark' do %>
-                <i class="fa-solid fa-users"></i>
+                <i class="fa-solid fa-map-location-dot"></i>
                 地図へ行く
               <% end %>
             </li>
@@ -61,6 +67,12 @@
               <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
               <i class="fa-solid fa-tags"></i>
                 ジャンル一覧
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_posts_path, class: 'nav-link text-dark' do %>
+                <i class="fa-solid fa-cat"></i>
+                見た猫一覧
               <% end %>
             </li>
             <li>
@@ -81,6 +93,12 @@
               <%= link_to public_posts_map_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-map-location-dot" style="margin-right: 5px;"></i>
                 地図へ行く
+              <% end %>
+            </li>
+            <li>
+              <%= link_to public_posts_path, class: 'nav-link text-dark' do %>
+                <i class="fa-solid fa-cat"></i>
+                見た猫一覧
               <% end %>
             </li>
             <li>
