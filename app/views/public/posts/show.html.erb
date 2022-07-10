@@ -33,30 +33,30 @@
       <%= link_to '削除', public_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？', class: 'btn-sm btn-danger' }, class: "btn btn-sm btn-danger"%>
       <% end %>
 
-      <% if @post.favorited_by?(current_user) %>
+      <% if @post.cuted_by?(current_user) %>
         <p>
         <%= link_to public_post_cute_path(@post), method: :delete do %>
-          <i class="fa-brands fa-gratipay"></i><%= @post.comments.where.not(cute: nil).count %> かわいい
+          <i class="fa-brands fa-gratipay"></i><%= @post.cutes.count %> かわいい
         <% end %>
         </p>
       <% else %>
         <p>
         <%= link_to public_post_cutes_path(@post), method: :post do %>
-          <i class="fa-brands fa-gratipay"></i><%= @post.comments.where.not(cute: nil).count %> かわいい
+          <i class="fa-brands fa-gratipay"></i><%= @post.cutes.count %> かわいい
         <% end %>
         </p>
       <% end %>
 
-      <% if @post.favorited_by?(current_user) %>
+      <% if @post.looked_by?(current_user) %>
 　　    <p>
-      <%= link_to public_post_looks_path(@post), method: :delete do %>
-        <i class="fa-solid fa-eye"></i><%= @post.comments.count %> 見た
+      <%= link_to public_post_look_path(@post), method: :delete do %>
+        <i class="fa-solid fa-eye"></i><%= @post.looks.count %> 見た
       <% end %>
         </p>
     <% else %>
         <p>
-      <%= link_to public_post_cute_path(@post), method: :post do %>
-        <i class="fa-solid fa-eye"></i><%= @post.comments.count %> 見た
+      <%= link_to public_post_looks_path(@post), method: :post do %>
+        <i class="fa-solid fa-eye"></i><%= @post.looks.count %> 見た
       <% end %>
         </p>
     <% end %>

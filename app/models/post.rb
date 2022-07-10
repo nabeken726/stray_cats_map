@@ -9,6 +9,8 @@ class Post < ApplicationRecord
 
   has_many :user_posts, dependent: :destroy
   has_many :comments,   dependent: :destroy
+  has_many :cutes,   dependent: :destroy
+  has_many :looks,   dependent: :destroy
 
   # バリデーション空欄処理だけ
   validates :title,presence:true
@@ -19,9 +21,14 @@ class Post < ApplicationRecord
   validates :longitude,presence:true
 
   # 名前はfavoritedにしてメソッドを作る
-  def favorited_by?(user)
-    comments.where.not(cute: nil).exists?(user_id: user.id)
-  end
-
+  # def cuted_by?(user)
+  #   cutes.where.not(cute: nil).exists?(user_id: user.id)
+  # end
+   def cuted_by?(user)
+    cutes.exists?(user_id: user.id)
+   end
+   def looked_by?(user)
+    looks.exists?(user_id: user.id)
+   end
 
 end
