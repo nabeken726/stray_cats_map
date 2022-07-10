@@ -26,7 +26,7 @@
       </table>
     </div>
 
-    <div class="col-md-3" style="margin-top: 50px; text-align: center;">
+    <div class="" style="margin-top: 50px; text-align: center;">
       <% if @post.user == current_user %>
       登録情報
       <%= link_to "編集",edit_public_post_path,class: 'btn btn-success' %>
@@ -61,6 +61,7 @@
         </p>
     <% end %>
     </div>
+  </div>
 
     <div class="col-md-12" style="margin-top: 50px; text-align: center;">
     <!--コメント機能-->
@@ -69,7 +70,6 @@
       <%= f.text_area :comment, size: "40x5" %>
       <%= f.submit '送信', class: "btn-sm btn-primary" %>
     <% end %>
-
     <table class="table table-inverse">
       <thead>
         <tr>
@@ -92,7 +92,6 @@
       </tbody>
     </table>
     </div>
-  </div>
 
 
 <style>

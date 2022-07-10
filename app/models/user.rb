@@ -10,6 +10,11 @@ class User < ApplicationRecord
   has_many :user_posts, dependent: :destroy
   has_many :comments,   dependent: :destroy
 
+
+  validates :name,presence:true
+  validates :email,presence:true
+
+
   # 退会したユーザーがログインできないように
   def active_for_authentication?
     super && ( is_deleted == false )

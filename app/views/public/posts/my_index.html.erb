@@ -23,9 +23,9 @@
             <td><%= link_to post.title, public_post_path(post) %></td>
             <td><%= post.introduction %></td>
             <td><%= post.genre.genre %></td>
+            <% end %>
             <% else %>
-            まだ投稿はありません
-          <% end %>
+            <p>まだ投稿はありません</p>
         <% end %>
         </tbody>
       </table>
