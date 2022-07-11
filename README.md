@@ -33,7 +33,7 @@ Stray Cat's MAP
 - IDE：Cloud9
 
 ## 使用素材
-- サイトのせる　URL+「これを使用する想定です。」
+- 「Photock」　https://www.photock.jp/list/k/%E9%87%8E%E8%89%AF%E7%8C%AB/
 - 随時使用したものが増えた場合は記載していきます。
 
 ## 閲覧環境

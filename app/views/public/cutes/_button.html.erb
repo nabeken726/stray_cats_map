@@ -1,28 +1,28 @@
 <!--見たボタンとかわいいボタンの部分テンプレート-->
-<% if @post.favorited_by?(current_user) %>
+    <% if @post.cuted_by?(current_user) %>
     <p>
-      <%= link_to public_post_cutes_path(@post), method: :delete do %>
-        <i class="fa-brands fa-gratipay"></i><%= @post.comments.count %> かわいい
+      <%= link_to public_post_cute_path(@post), method: :delete do %>
+      <i class="fa-brands fa-gratipay"></i><%= @post.cutes.count %> かわいい
       <% end %>
     </p>
-    <% else %>
+      <% else %>
     <p>
-      <%= link_to public_post_cute_path(@post), method: :post do %>
-        <i class="fa-brands fa-gratipay"></i><%= @post.comments.count %> かわいい
+      <%= link_to public_post_cutes_path(@post), method: :post do %>
+      <i class="fa-brands fa-gratipay"></i><%= @post.cutes.count %> かわいい
       <% end %>
     </p>
-  <% end %>
+    <% end %>
 
-<% if @post.favorited_by?(current_user) %>
+    <% if @post.looked_by?(current_user) %>
 　　<p>
-      <%= link_to public_post_looks_path(@post), method: :delete do %>
-        <i class="fa-solid fa-eye"></i><%= @post.comments.count %> 見た
-      <% end %>
+      <%= link_to public_post_look_path(@post), method: :delete do %>
+      <i class="fa-solid fa-eye"></i><%= @post.looks.count %> 見た
+    <% end %>
     </p>
     <% else %>
     <p>
-      <%= link_to public_post_cute_path(@post), method: :post do %>
-        <i class="fa-solid fa-eye"></i><%= @post.comments.count %> 見た
-      <% end %>
+      <%= link_to public_post_looks_path(@post), method: :post do %>
+      <i class="fa-solid fa-eye"></i><%= @post.looks.count %> 見た
+    <% end %>
     </p>
-<% end %>
+    <% end %>

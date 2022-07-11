@@ -75,3 +75,5 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 # 画像関係
 gem 'carrierwave'
+# 非同期通信用
+gem 'jquery-rails'
