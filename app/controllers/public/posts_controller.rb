@@ -42,7 +42,7 @@ class Public::PostsController < ApplicationController
       if @post.save
         redirect_to public_post_path(@post)
       else
-        render :new
+        render "new"
       end
   end
 

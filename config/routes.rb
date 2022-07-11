@@ -49,11 +49,6 @@ Rails.application.routes.draw do
     end
       resources :users, except: [:index, :show]
       get  'users' => 'users#show', as: 'show'
-      # 退会確認画面
-      # get '/users/:id/confirm' => 'users#confirm', as: 'confirm'
-      # 論理削除用のルーティング
-      # patch '/users/:id/decline' => 'users#decline', as: 'decline'
-      # post 'users/confirm'
     end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,15 +1,17 @@
 
+
+
 <div class="container">
   <div class="row">
-    <div class="col-md-3" style="margin-top: 50px; text-align: center;">
+    <div class="col-md-3" style="text-align: center;">
       <h2>投稿詳細</h2>
     </div>
-    <div class="col-md-6" style="margin-top: 50px; text-align: center;">
+    <div class="col-md-6" style="text-align: center;">
       <div id="map"></div>
       <table class="table table-inverse">
         <th>画像</th>
           <td>
-            <%= image_tag @post.image,:size =>'200x200' %>
+            <%= image_tag @post.image,:size =>'300x200' %>
           </td>
         </tr>
         <th>タイトル</th>
@@ -26,72 +28,32 @@
       </table>
     </div>
 
-    <div class="" style="margin-top: 50px; text-align: center;">
+  <div class="" style="margin-top: 50px; text-align: center;">
       <% if @post.user == current_user %>
       登録情報
       <%= link_to "編集",edit_public_post_path,class: 'btn btn-success' %>
       <%= link_to '削除', public_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？', class: 'btn-sm btn-danger' }, class: "btn btn-sm btn-danger"%>
       <% end %>
-
-      <% if @post.cuted_by?(current_user) %>
-        <p>
-        <%= link_to public_post_cute_path(@post), method: :delete do %>
-          <i class="fa-brands fa-gratipay"></i><%= @post.cutes.count %> かわいい
-        <% end %>
-        </p>
-      <% else %>
-        <p>
-        <%= link_to public_post_cutes_path(@post), method: :post do %>
-          <i class="fa-brands fa-gratipay"></i><%= @post.cutes.count %> かわいい
-        <% end %>
-        </p>
-      <% end %>
-
-      <% if @post.looked_by?(current_user) %>
-　　    <p>
-      <%= link_to public_post_look_path(@post), method: :delete do %>
-        <i class="fa-solid fa-eye"></i><%= @post.looks.count %> 見た
-      <% end %>
-        </p>
-    <% else %>
-        <p>
-      <%= link_to public_post_looks_path(@post), method: :post do %>
-        <i class="fa-solid fa-eye"></i><%= @post.looks.count %> 見た
-      <% end %>
-        </p>
-    <% end %>
+      <!--cute,look機能のテンプレート-->
+      <div id="cute_buttons_<%= @post.id %>">
+      <%= render "public/cutes/button", post: @post %>
+      </div>
+      <div id="look_buttons_<%= @post.id %>">
+      <%= render "public/looks/button", post: @post %>
+      </div>
     </div>
   </div>
 
-    <div class="col-md-12" style="margin-top: 50px; text-align: center;">
-    <!--コメント機能-->
-    <!--publicを記入してネストしている変数をとる-->
-    <%= form_with model: [:public,@post,@comment] do |f| %>
-      <%= f.text_area :comment, size: "40x5" %>
-      <%= f.submit '送信', class: "btn-sm btn-primary" %>
-    <% end %>
-    <table class="table table-inverse">
-      <thead>
-        <tr>
-          <th>コメント投稿者</th>
-          <th>コメント内容</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @comments.each do |comment| %>
-          <tr>
-            <!--コメント投稿者の名前をとってきたい-->
-            <td><%= comment.user.name %></td>
-            <td><%= comment.comment %></td>
-            <!--今ログインしているUserしか削除ボタンを表示させない。-->
-            <% if comment.user == current_user %>
-            <td><%= link_to "削除", public_post_comment_path(@post, comment), method: :delete, class: "btn btn-sm btn-danger" %></td>
-            <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <!--コメントのテンプレート-->
+  <div class="col-md-12" style="margin-top: 50px; text-align: center;">
+    <div class="new-comment">
+      <%= render 'public/comments/form', post: @post, comment: @comment %>
     </div>
+    <div id="comments_area">
+      <%= render 'public/comments/post_comments', post: @post, comments: @comments %>
+    </div>
+  </div>
+
 
 
 <style>

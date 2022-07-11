@@ -1,7 +1,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-3" style="text-align: center; margin-top: 50px;">
+    <div class="col-md-3" style="text-align: center;">
       <h2>投稿一覧</h2>
       <%= link_to "自分の投稿一覧へ",public_posts_my_index_path %>
     </div>
@@ -18,7 +18,7 @@
         <tbody>
           <% @posts.each do |post| %>
           <tr>
-            <td><%= image_tag post.image,:size =>'100x100' %></td>
+            <td><%= image_tag post.image,:size =>'150x100' %></td>
             <td><%= link_to post.title, public_post_path(post) %></td>
             <td><%= post.introduction %></td>
             <td><%= post.genre.genre %></td>

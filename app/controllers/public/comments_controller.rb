@@ -5,19 +5,18 @@ class Public::CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to request.referer
+      flash.now[:notice] = 'コメントを投稿しました'
+      render "public/comments/post_comments"
     else
-      @post_new = Post.new
-      @comments = @post.comments
-      redirect_to public_posts_path
+      render "error"
     end
   end
 
   def destroy
+    Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
+    flash.now[:alert] = '投稿を削除しました'
     @post = Post.find(params[:post_id])
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to request.referer
+    render "post_comments"
   end
 
   private

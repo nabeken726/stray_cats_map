@@ -1,0 +1,14 @@
+<!--見たボタンとかわいいボタンの部分テンプレート-->
+  <% if post.looked_by?(current_user) %>
+　　<p>
+    <%= link_to public_post_look_path(post, id: post.id), method: :delete, remote: true do %>
+      <i class="fa-solid fa-eye"></i><%= post.looks.count %> 見た
+    <% end %>
+    </p>
+  <% else %>
+    <p>
+    <%= link_to public_post_looks_path(post), method: :post, remote: true do %>
+      <i class="fa-solid fa-eye"></i><%= post.looks.count %> 見た
+    <% end %>
+    </p>
+  <% end %>

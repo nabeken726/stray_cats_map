@@ -20,10 +20,7 @@ class Post < ApplicationRecord
   validates :latitude,presence:true
   validates :longitude,presence:true
 
-  # 名前はfavoritedにしてメソッドを作る
-  # def cuted_by?(user)
-  #   cutes.where.not(cute: nil).exists?(user_id: user.id)
-  # end
+   # かわいい、みた機能
    def cuted_by?(user)
     cutes.exists?(user_id: user.id)
    end

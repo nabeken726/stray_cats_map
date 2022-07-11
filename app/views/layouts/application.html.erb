@@ -10,6 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <!--フラッシュメッセージ用-->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div id="flash-message">
+      <%#= render 'layouts/flash' %>
+    </div>
      <header>
       <%= render 'layouts/header' %>
     </header>
