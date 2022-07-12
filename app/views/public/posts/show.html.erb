@@ -1,6 +1,4 @@
 
-
-
 <div class="container">
   <div class="row">
     <div class="col-md-3" style="text-align: center;">
@@ -28,20 +26,21 @@
       </table>
     </div>
 
-  <div class="" style="margin-top: 50px; text-align: center;">
+    <div class="col-md-3" style="text-align: center;">
       <% if @post.user == current_user %>
       登録情報
       <%= link_to "編集",edit_public_post_path,class: 'btn btn-success' %>
       <%= link_to '削除', public_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？', class: 'btn-sm btn-danger' }, class: "btn btn-sm btn-danger"%>
       <% end %>
+
       <!--cute,look機能のテンプレート-->
       <div id="cute_buttons_<%= @post.id %>">
-      <%= render "public/cutes/button", post: @post %>
+        <%= render "public/cutes/button", post: @post %>
       </div>
       <div id="look_buttons_<%= @post.id %>">
-      <%= render "public/looks/button", post: @post %>
+        <%= render "public/looks/button", post: @post %>
       </div>
-    </div>
+      </div>
   </div>
 
   <!--コメントのテンプレート-->

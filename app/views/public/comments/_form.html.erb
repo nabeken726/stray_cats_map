@@ -1,8 +1,5 @@
 <!--publicを記入してネストしている変数をとる-->
     <%= form_with model: [:public,post,comment], local: false do |f| %>
-      <div id="comments-error">
-        <%= render 'layouts/error_messages', model: f.object %>
-      </div>
       <%= f.text_area :comment, size: "40x5" %>
       <%= f.submit '送信', class: "btn-sm btn-primary" %>
     <% end %>

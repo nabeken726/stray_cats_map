@@ -15,7 +15,7 @@ class Admin::GenresController < ApplicationController
       redirect_to admin_genres_path
     else
       @genres = Genre.all
-      render 'index'
+      render "index"
     end
   end
 
@@ -26,7 +26,7 @@ class Admin::GenresController < ApplicationController
     if @genre.update(genre_params)
       redirect_to admin_genres_path
     else
-      render 'edit'
+      render "edit"
     end
   end
 
