@@ -46,8 +46,8 @@
   <div class="row">
     <div class="col-md-12" style="text-align: center;">
       <!--hidden_fieldで緯度経度を入れてあげる-->
-      <%= f.hidden_field :latitude, value: '' %>
-      <%= f.hidden_field :longitude, value: '' %>
+      <%= f.hidden_field :latitude %>
+      <%= f.hidden_field :longitude %>
       <%= f.submit "編集内容を保存",class: 'btn btn-success' %>
       <% end %>
     </div>

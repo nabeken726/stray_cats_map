@@ -32,24 +32,30 @@
 
     <div class="col-md-12" style="margin-top: 50px; text-align: center;">
     <table class="table table-inverse">
-      <thead>
-        <tr>
-          <th>コメント投稿者</th>
-          <th>コメント内容</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @comments.each do |comment| %>
-          <tr>
-            <!--コメント投稿者の名前をとってきたい-->
-            <td><%= comment.user.name %></td>
-            <td><%= comment.comment %></td>
-            <td><%= link_to "削除", public_post_comment_path(@post, comment), method: :delete, class: "btn btn-sm btn-danger" %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    </div>
+    <thead>
+      <tr>
+        <th>コメント投稿者</th>
+        <th>コメント内容</th>
+        <th>コメント日</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% if @post.comments.present? %>
+      <p>コメント件数：<%= @post.comments.count %></p>
+      <% @post.comments.each do |comment| %>
+      <tr>
+        <td><%= comment.user.name %></td>
+        <td><%= comment.comment %></td>
+        <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= link_to "削除", public_post_comment_path(@post, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %></td>
+      <% end %>
+    <% else %>
+      <p>コメントはまだありません</p>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  </div>
 
 
 

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'genres/show'
+  end
   # ここはdeviseのルーティング
   # 会員用
   # URL /customers/sign_in ...
@@ -40,6 +43,7 @@ Rails.application.routes.draw do
   # 会員側
     namespace :public do
       resources :homes, only: [:top, :about]
+      resources :genres, only: [:index]
       resources :posts do
         # 見た、かわいいボタン用
         resources :looks, only: [:create, :destroy]

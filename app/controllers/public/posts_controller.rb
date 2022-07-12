@@ -8,7 +8,9 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @genres = Genre.all
+    # 退会しているuserの投稿は取得しない
+    @posts = Post.all.where.not(user_id: User.where(is_deleted: true).ids)
   end
 
   def show
@@ -25,7 +27,8 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to public_post_path
+      flash[:notice] = "更新しました"
+      redirect_to public_post_path(@post)
     else
       render "edit"
     end
@@ -40,8 +43,10 @@ class Public::PostsController < ApplicationController
     @post.user_id = current_user.id
     @post.genre_id = params[:post][:genre_id]
       if @post.save
+        flash[:notice] = "投稿しました"
         redirect_to public_post_path(@post)
       else
+        flash[:alert] = "投稿できませんでした"
         render "new"
       end
   end
@@ -49,6 +54,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+    flash[:alert] = "投稿を削除しました"
     redirect_to public_posts_path
   end
 

@@ -7,18 +7,20 @@ class Post < ApplicationRecord
   belongs_to :genre
   belongs_to :user
 
-  has_many :user_posts, dependent: :destroy
-  has_many :comments,   dependent: :destroy
-  has_many :cutes,   dependent: :destroy
-  has_many :looks,   dependent: :destroy
+  has_many :user_posts,dependent: :destroy
+  has_many :comments,dependent: :destroy
+  has_many :cutes,dependent: :destroy
+  has_many :looks,dependent: :destroy
 
-  # バリデーション空欄処理だけ
-  validates :title,presence:true
-  validates :introduction,presence:true
-  validates :genre,presence:true
-  validates :image,presence:true
-  validates :latitude,presence:true
-  validates :longitude,presence:true
+  # バリデーション
+  # タイトル20文字まで
+  validates :title,       presence:true, length: {maximum: 20}
+  # 内容50文字まで
+  validates :introduction,presence:true, length: {maximum: 50}
+  validates :genre,       presence:true
+  validates :image,       presence:true
+  validates :latitude,    presence:true
+  validates :longitude,   presence:true
 
    # かわいい、みた機能
    def cuted_by?(user)
