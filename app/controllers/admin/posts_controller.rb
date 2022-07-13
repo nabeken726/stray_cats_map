@@ -1,8 +1,13 @@
 class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
 
-  def index
+  # 管理者権限でしようする場合
+  def map
     @posts = Post.all
+  end
+
+  def index
+    @posts = Post.all.page(params[:page]).per(10)
   end
 
   def show

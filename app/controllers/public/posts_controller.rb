@@ -4,13 +4,13 @@ class Public::PostsController < ApplicationController
   # 自分の投稿
   def my_index
     @user = current_user
-    @posts = Post.where(user_id: current_user.id)
+    @posts = Post.where(user_id: current_user.id).page(params[:page]).per(10)
   end
 
   def index
     @genres = Genre.all
     # 退会しているuserの投稿は取得しない
-    @posts = Post.all.where.not(user_id: User.where(is_deleted: true).ids)
+    @posts = Post.narrow_down.page(params[:page]).per(10)
   end
 
   def show

@@ -4,6 +4,7 @@
     <div class="col-md-3" style="text-align: center;">
       <h2>投稿一覧</h2>
       <%= link_to "自分の投稿一覧へ",public_posts_my_index_path %>
+      <!--ジャンル検索のテンプレート-->
       <%= render "public/posts/genre_post", genres: @genres %>
     </div>
     <div class="col-md-8" style="text-align: center; margin-top: 50px;">
@@ -26,6 +27,10 @@
           <% end %>
         </tbody>
       </table>
+      <div class="pagination" style="justify-content: center; margin-top: 30px;">
+        <!--ページネーション入れる-->
+        <p><%= paginate @posts %></p>
+      </div>
     </div>
   </div>
 

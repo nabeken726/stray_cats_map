@@ -1,23 +1,27 @@
 <!-- footerの部分テンプレート -->
 <footer class="fixed-bottom" style="background-color: #FF9999";>
-  <div class="container">
+  <div class="container p-2">
     <div class="row">
-      <div class="col-md-12" style="text-align: center; line-height: 100px;">
-        <!--<p> CopyRight Stray Cat's MAP.inc</p>-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h6>Link</h6>
         <!-- ユーザーがログインしている＆会員の場合に表示 -->
+        <ul class="p-0 list-unstyled">
         <% if user_signed_in? %>
-        <%= link_to "野良猫の接し方", nora_path %>
-        <%= link_to "迷い猫の保護の仕方", hogo_path %>
+        <li><%= link_to "野良猫の接し方", nora_path %></li>
+        <li><%= link_to "迷い猫の保護の仕方", hogo_path %></li>
         <!-- ユーザーがログインしているかつ管理者の場合に表示 -->
         <% elsif admin_signed_in? %>
-          <p>管理者ログイン中</p>
+          <li>管理者ログイン中</li>
         <!-- 未ログインの場合に表示 -->
         <% else %>
-          <%= link_to "野良猫の接し方", nora_path %>
-          <%= link_to "迷い猫の保護の仕方", hogo_path %>
-          <%= link_to "管理者入口", new_admin_session_path %>
+          <li><%= link_to "野良猫の接し方", nora_path %></li>
+          <li><%= link_to "迷い猫の保護の仕方", hogo_path %></li>
+          <li><%= link_to "管理者入口", new_admin_session_path %></li>
         <% end %>
-
+        </ul>
+      </div>
+      <div class="col-md-8" style="text-align: center; padding-top: 50px;">
+        <p> CopyRight Stray Cat's MAP.inc</p>
       </div>
     </div>
   </div>

@@ -68,7 +68,7 @@ end
 
 # ログイン関連
 gem 'devise'
-
+# script用未使用
 gem "gon"
 # ImageMagick用
 gem 'mini_magick'
@@ -78,3 +78,7 @@ gem 'image_processing', '~> 1.2'
 gem 'carrierwave'
 # 非同期通信用
 gem 'jquery-rails'
+# ページネーション
+gem 'kaminari','~> 1.2.1'
+# デバイス日本語化
+gem 'devise-i18n'

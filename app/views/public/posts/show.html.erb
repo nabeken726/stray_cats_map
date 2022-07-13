@@ -12,7 +12,7 @@
             <%= image_tag @post.image,:size =>'300x200' %>
           </td>
         </tr>
-        <th>タイトル</th>
+          <th>タイトル</th>
           <td><%= @post.title %></td>
         </tr>
         <tr>
@@ -23,6 +23,15 @@
           <th>ジャンル</th>
           <td><%= @post.genre.genre %></td>
         </tr>
+        <tr>
+          <!--cute,look機能のテンプレート-->
+          <td id="cute_buttons_<%= @post.id %>">
+            <%= render "public/cutes/button", post: @post %>
+          </td>
+          <td id="look_buttons_<%= @post.id %>">
+            <%= render "public/looks/button", post: @post %>
+          </td>
+        </tr>
       </table>
     </div>
 
@@ -32,15 +41,6 @@
       <%= link_to "編集",edit_public_post_path,class: 'btn btn-success' %>
       <%= link_to '削除', public_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？', class: 'btn-sm btn-danger' }, class: "btn btn-sm btn-danger"%>
       <% end %>
-
-      <!--cute,look機能のテンプレート-->
-      <div id="cute_buttons_<%= @post.id %>">
-        <%= render "public/cutes/button", post: @post %>
-      </div>
-      <div id="look_buttons_<%= @post.id %>">
-        <%= render "public/looks/button", post: @post %>
-      </div>
-      </div>
   </div>
 
   <!--コメントのテンプレート-->
