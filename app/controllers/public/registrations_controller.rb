@@ -67,14 +67,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # configure_permitted_parametersを呼ぶ
   before_action :configure_permitted_parameters
 
-
   protected
+
   # devise用のストロングパラメーター
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:image])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :image])
   end
-
-
-
-
 end

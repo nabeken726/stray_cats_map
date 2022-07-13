@@ -52,7 +52,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-  no_image.jpg
+    no_image.jpg
   end
 
   def extension_allowlist
@@ -60,9 +60,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-   process resize_to_fit: [200, 200]
+    process resize_to_fit: [200, 200]
   end
   version :thumb50 do
-  process resize_to_fit: [100, 100]
- end
+    process resize_to_fit: [100, 100]
+  end
 end

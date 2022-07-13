@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   # ログインしていないとshow,create 使用不可
-  before_action :authenticate_user!, only: [:show, :create,:my_index]
+  before_action :authenticate_user!, only: [:show, :create, :my_index]
   # 自分の投稿
   def my_index
     @user = current_user
@@ -42,13 +42,13 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.genre_id = params[:post][:genre_id]
-      if @post.save
-        flash[:notice] = "投稿しました"
-        redirect_to public_post_path(@post)
-      else
-        flash[:alert] = "投稿できませんでした"
-        render "new"
-      end
+    if @post.save
+      flash[:notice] = "投稿しました"
+      redirect_to public_post_path(@post)
+    else
+      flash[:alert] = "投稿できませんでした"
+      render "new"
+    end
   end
 
   def destroy
@@ -65,8 +65,6 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title,:introduction,:image,:comment,:genre_id,:latitude,:longitude)
+    params.require(:post).permit(:title, :introduction, :image, :comment, :genre_id, :latitude, :longitude)
   end
-
-
 end

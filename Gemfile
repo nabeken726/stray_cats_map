@@ -34,6 +34,8 @@ group :development, :test do
 
   # binding.pry使うために
   gem 'pry-rails'
+  # rubocop導入
+  gem 'rubocop-airbnb'
 end
 
 group :development do
@@ -66,7 +68,6 @@ end
 
 # ログイン関連
 gem 'devise'
-
 
 gem "gon"
 # ImageMagick用

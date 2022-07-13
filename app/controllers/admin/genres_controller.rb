@@ -1,6 +1,5 @@
 class Admin::GenresController < ApplicationController
-
-  #アクションが動く前にset_genreメソッドを実行
+  # アクションが動く前にset_genreメソッドを実行
   before_action :authenticate_admin!
   before_action :set_genre, only: [:edit, :update, :destroy]
 
@@ -35,15 +34,13 @@ class Admin::GenresController < ApplicationController
     redirect_to admin_genres_path
   end
 
-    private
+  private
 
-    def set_genre
-      @genre = Genre.find(params[:id])
-    end
+  def set_genre
+    @genre = Genre.find(params[:id])
+  end
 
-    def genre_params
-      params.require(:genre).permit(:genre)
-    end
-
-
+  def genre_params
+    params.require(:genre).permit(:genre)
+  end
 end

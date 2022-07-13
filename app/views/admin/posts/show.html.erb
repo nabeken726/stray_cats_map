@@ -30,35 +30,15 @@
       <%= link_to '削除', admin_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？', class: 'btn-sm btn-danger' }, class: "btn btn-sm btn-danger"%>
     </div>
 
-    <div class="col-md-12" style="margin-top: 50px; text-align: center;">
-    <table class="table table-inverse">
-    <thead>
-      <tr>
-        <th>コメント投稿者</th>
-        <th>コメント内容</th>
-        <th>コメント日</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% if @post.comments.present? %>
-      <p>コメント件数：<%= @post.comments.count %></p>
-      <% @post.comments.each do |comment| %>
-      <tr>
-        <td><%= comment.user.name %></td>
-        <td><%= comment.comment %></td>
-        <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%= link_to "削除", public_post_comment_path(@post, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %></td>
-      <% end %>
-    <% else %>
-      <p>コメントはまだありません</p>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+   <div class="col-md-12" style="margin-top: 50px; text-align: center;">
+    <!--コメントのテンプレート-->
+    <div id="comments_area">
+      <%= render 'public/comments/post_comments', post: @post, comments: @comments %>
+    </div>
   </div>
 
 
-
+<!--マップの記述-->
 <style>
 #map{
   height: 250px;

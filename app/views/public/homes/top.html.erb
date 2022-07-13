@@ -1,17 +1,20 @@
 
 <!--サインインした後にくるページなので-->
 <!--ユーザーの名前を入れてあげる-->
-<% if user_signed_in? %>
-  <h1>ようこそ！<%= @user.name %>さん</h1>
-<% else %>
-  <h1>ようこそ！</h1>
-<% end %>
-<p>
-  この世界にはたくさんの猫たちがいます。
-  さぁ一緒に探しに行きませんか？
-</p>
-
-<div>
-  <i class="fas fa-running fa-5x"></i>
-  <i class="fa-solid fa-cat"></i>
+<div class="container">
+  <div class="row">
+    <% if user_signed_in? %>
+      <h1>ようこそ！<%= @user.name %>さん</h1>
+    <% else %>
+      <h1>ようこそ！</h1>
+    <% end %>
+    <p>
+      この世界にはたくさんの猫たちがいます。
+      さぁ一緒に探しに行きませんか？
+    </p>
+  </div>
 </div>
+<div>
+      <i class="fas fa-running fa-5x"></i>
+      <i class="fa-solid fa-cat"></i>
+    </div>

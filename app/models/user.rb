@@ -6,22 +6,18 @@ class User < ApplicationRecord
 
   has_one_attached :image
 
-
   has_many :user_posts, dependent: :destroy
   has_many :comments,   dependent: :destroy
   has_many :cutes,   dependent: :destroy
   has_many :looks,   dependent: :destroy
 
-
-  validates :name,presence:true
-  validates :email,presence:true
-
+  validates :name, presence: true
+  validates :email, presence: true
 
   # 退会したユーザーがログインできないように
   def active_for_authentication?
-    super && ( is_deleted == false )
+    super && (is_deleted == false)
   end
-
 
   # User画像のないときの処理
   # class: "rounded-circle", size: "150x150"のクラスを当てる方法
@@ -32,5 +28,4 @@ class User < ApplicationRecord
     end
     image
   end
-
 end

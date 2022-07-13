@@ -1,5 +1,4 @@
 class Admin::PostsController < ApplicationController
-
   before_action :authenticate_admin!
 
   def index
@@ -31,5 +30,4 @@ class Admin::PostsController < ApplicationController
     @post.destroy
     redirect_to admin_posts_path
   end
-
 end

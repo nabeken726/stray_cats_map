@@ -17,7 +17,8 @@
         <td><%= comment.comment %></td>
         <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
         <!--今ログインしているUserしか削除ボタンを表示させない。-->
-        <% if comment.user == current_user %>
+        <!--adiminも全て削除できるように nilで判定で!で反転させる　-->
+        <% if comment.user == current_user || !current_admin.blank? %>
         <td><%= link_to "削除", public_post_comment_path(post, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %></td>
         <% end %>
       <% end %>

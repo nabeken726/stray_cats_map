@@ -1,5 +1,4 @@
 class Public::CutesController < ApplicationController
-
   def create
     @post = Post.find(params[:post_id])
     cute = current_user.cutes.new(post_id: @post.id)
@@ -11,5 +10,4 @@ class Public::CutesController < ApplicationController
     cute = current_user.cutes.find_by(post_id: @post.id)
     cute.destroy
   end
-
 end
