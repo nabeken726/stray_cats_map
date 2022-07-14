@@ -10,7 +10,7 @@
         <td><%= image_tag @user.get_image,class: "rounded-circle", size: "150x150" %></td>
       </tr>
       <tr>
-        <th>会員ID</th>
+        <th>ユーザーID</th>
         <td><%= @user.id %></td>
       </tr>
       <tr>
@@ -22,7 +22,7 @@
         <td><%= @user.email %></td>
       </tr>
       <tr>
-        <th>会員ステータス</th>
+        <th>ユーザーステータス</th>
         <!--ステータスの記述を行う。-->
         <% if @user.is_deleted == false %>
             <td>有効</td>
@@ -42,7 +42,7 @@
         <br>
         <tr>
           <td>
-          <%= link_to "会員一覧", admin_users_path, class: 'btn btn-primary' %>
+          <%= link_to "ユーザー一覧", admin_users_path, class: 'btn btn-primary' %>
           </td>
         </tr>
       </table>

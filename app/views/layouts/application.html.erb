@@ -10,15 +10,13 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <header>
       <%= render 'layouts/header' %>
-    </header>
     <!--アラート用にmtを入れる-->
-    <div class="mt-5">
-      <%= yield %>
+    <div class="background">
+      <div class="pt-5">
+        <%= yield %>
+      </div>
     </div>
-    <footer>
       <%= render 'layouts/footer' %>
-    </footer>
   </body>
 </html>
