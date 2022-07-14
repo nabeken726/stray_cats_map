@@ -1,18 +1,17 @@
   <!--コメント機能-->
-  <table class="table table-inverse">
-    <thead>
-      <tr>
+  <table class="">
+      <tr style="word-break : break-all;">
+        <th></th>
         <th>コメント投稿者</th>
         <th>コメント内容</th>
         <th>コメント日</th>
       </tr>
-    </thead>
-    <tbody>
     <% if post.comments.present? %>
       <p>コメント件数：<%= post.comments.count %></p>
       <% post.comments.each do |comment| %>
-      <tr>
+      <tr　style="">
         <!--コメント投稿者の名前をとってきたい-->
+        <td><%= image_tag comment.user.get_image,class: "rounded-circle", size: "50x50" %></td>
         <td><%= comment.user.name %></td>
         <td><%= comment.comment %></td>
         <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
@@ -26,5 +25,4 @@
       <p>コメントはまだありません</p>
       </tr>
     <% end %>
-    </tbody>
   </table>

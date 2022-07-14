@@ -7,33 +7,19 @@
     </div>
     <div class="col-md-8" style="margin-top: 50px;">
       <table class="table">
-        <div class="field">
           <tr>
             <th><%= f.label :プロフィールアイコン %></th>
-            <th>
-                <%= f.file_field :image %>
-            </th>
+            <th><%= f.file_field :image %></th>
           </tr>
           <tr>
-            <th>
-              <%= f.label :氏名 %>
-            </th>
-            <td>
-              <%= f.text_field :name %>
-            </td>
+            <th><%= f.label :氏名 %></th>
+            <td><%= f.text_field :name %></td>
           </tr>
-        </div>
-        <div class="field">
           <tr>
-            <th>
-              <%= f.label :メール　アドレス %>
-            </th>
-            <td>
-              <%= f.text_field :email %>
-            </td>
+            <th><%= f.label :メール　アドレス %></th>
+            <td><%= f.text_field :email %></td>
             <td></td>
           </tr>
-        </div>
       </table>
     </div>
   </div>

@@ -29,7 +29,7 @@ class Admin::SessionsController < Devise::SessionsController
 
   # 管理者ログイン後の遷移先
   def after_sign_in_path_for(resource)
-    admin_genres_path
+    admin_users_path
   end
 
   # 管理者ログアウト後の遷移先

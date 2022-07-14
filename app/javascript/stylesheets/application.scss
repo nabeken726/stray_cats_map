@@ -1,5 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+nav {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+}
 
 body {
   padding-top: 56px;
@@ -10,3 +16,12 @@ btn {
   border-radius: 4px;
 }
 
+
+table td {
+  word-break : break-all;
+}
+
+
+table th {
+  white-space: nowrap;
+}

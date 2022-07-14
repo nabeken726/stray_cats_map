@@ -4,7 +4,7 @@
   <nav class ="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #FF9999;">
     <div class="container-fluid">
       <!-- 店名ロゴの表示-->
-      <a class="navbar-brand" href="/" style="font-family: cursive;">
+      <a class="navbar-brand" href="/" style="font-family: Caveat;">
         <span><i class="fa-solid fa-paw"style="margin-right: 5px;"></i>Stray Cat's MAP<i class="fa-solid fa-paw"style="margin-left: 5px;"></i></span>
       </a>
       <!-- ナビゲーション要素の追加 -->
@@ -22,31 +22,31 @@
                 <!--現在ログインしているユーザーのマイページ。-->
                 <%= link_to public_show_path, class: 'nav-link text-dark' do %>
                   <i class="fa-regular fa-user"></i>
-                  マイページ
+                  My page
                 <% end %>
               </li>
             <li>
               <%= link_to  public_posts_map_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-map-location-dot"></i>
-                地図へ行く
+                MAP
               <% end %>
             </li>
             <li>
               <%= link_to  new_public_post_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-paper-plane"></i>
-                投稿する
+                Post
               <% end %>
             </li>
             <li>
               <%= link_to public_posts_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-cat"></i>
-                見た猫一覧
+                Cat's
               <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
                 <i class="fas fa-sign-out-alt"></i>
-                ログアウト
+                Log Out
               <% end %>
             </li>
             <!-- ユーザーがログインしているかつ管理者の場合に表示 -->
@@ -54,63 +54,63 @@
             <li>
               <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-users"></i>
-                会員一覧
+                User's
               <% end %>
             </li>
             <li>
               <%= link_to admin_posts_map_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-map-location-dot"></i>
-                地図へ行く
+                MAP
               <% end %>
             </li>
             <li>
               <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
               <i class="fa-solid fa-tags"></i>
-                ジャンル一覧
+                Genre's
               <% end %>
             </li>
             <li>
               <%= link_to admin_posts_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-cat"></i>
-                見た猫一覧
+                Cat's
               <% end %>
             </li>
             <li>
               <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-right-from-bracket"></i>
-                ログアウト
+                Log Out
               <% end %>
             </li>
           <!-- 未ログインの場合に表示 -->
           <% else %>
             <li>
               <%= link_to about_path, class: 'nav-link text-dark' do %>
-                <i class="fa-solid fa-shop" style="margin-right: 5px;"></i>
+                <i class="fa-solid fa-fish"></i>
                 About
               <% end %>
             </li>
             <li>
               <%= link_to public_posts_map_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-map-location-dot" style="margin-right: 5px;"></i>
-                地図へ行く
+                MAP
               <% end %>
             </li>
             <li>
               <%= link_to public_posts_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-cat"></i>
-                見た猫一覧
+                Cat's
               <% end %>
             </li>
             <li>
               <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i>
-                新規登録
+                Sign Up
               <% end %>
             </li>
             <li>
               <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-right-to-bracket" style="margin-right: 5px;"></i>
-                ログイン
+                Log In
               <% end %>
             </li>
           <% end %>
@@ -120,11 +120,11 @@
   </nav>
   <!--フラッシュメッセージ用-->
   <% if notice || alert %>
-    <div class="alert alert-warning">
+    <div class="alert alert-secondary">
       <div class="container">
         <%= notice %>
         <%= alert %>
-        <button type="button" class="close" 
+        <button type="button" class="close"
       data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

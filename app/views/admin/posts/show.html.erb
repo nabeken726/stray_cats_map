@@ -6,12 +6,12 @@
     <div class="col-md-6" style="margin-top: 50px; text-align: center;">
       <div id="map"></div>
       <table class="table table-inverse">
-        <th>画像</th>
-          <td>
-            <%= image_tag @post.image,:size =>'300x200' %>
-          </td>
+        <tr>
+          <th>画像</th>
+          <td><%= image_tag @post.image,:size =>'300x200' %></td>
         </tr>
-        <th>タイトル</th>
+        <tr>
+          <th>タイトル</th>
           <td><%= @post.title %></td>
         </tr>
         <tr>
@@ -25,18 +25,17 @@
       </table>
     </div>
     <div class="col-md-3" style="margin-top: 50px; text-align: center;">
-      登録情報
-      <br>
+      登録情報<br>
       <%= link_to '削除', admin_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？', class: 'btn-sm btn-danger' }, class: "btn btn-sm btn-danger"%>
     </div>
+  </div>
 
-   <div class="col-md-12" style="margin-top: 50px; text-align: center;">
+  <div class="col-md-12" style="margin-top: 50px; text-align: left;">
     <!--コメントのテンプレート-->
     <div id="comments_area">
       <%= render 'public/comments/post_comments', post: @post, comments: @comments %>
     </div>
   </div>
-
 
 <!--マップの記述-->
 <style>

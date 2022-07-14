@@ -4,8 +4,7 @@
       <h2>猫一覧</h2>
     </div>
     <div class="col-md-8" style="text-align: center; margin-top: 50px;">
-      <table class='table'>
-        <thead>
+      <table class='table table-hover table-inverse'>
           <tr>
             <th>投稿者</th>
             <th>画像</th>
@@ -13,8 +12,6 @@
             <th>説明</th>
             <th>ジャンル</th>
           </tr>
-        </thead>
-        <tbody>
           <% @posts.each do |post| %>
           <tr>
             <td><%= image_tag post.user.get_image,class: "rounded-circle", size: "50x50" %></td>
@@ -23,7 +20,6 @@
             <td><%= post.introduction %></td>
             <td><%= post.genre.genre %></td>
           <% end %>
-        </tbody>
       </table>
     <div class="pagination" style="justify-content: center; margin-top: 30px;">
       <!--ページネーション入れる-->

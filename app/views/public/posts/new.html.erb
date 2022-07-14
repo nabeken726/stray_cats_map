@@ -5,27 +5,29 @@
     <div class="col-md-3" style="text-align: center;">
       <h2>猫を投稿</h2>
     </div>
+
     <div class="col-md-8">
+      <!--マップ用の記述-->
       <h2>MAP</h2>
       <input id="address" type="textbox" value="東京都">
       <input type="button" value="行ってみる" onclick="codeAddress()">
       <div id="display">ここに緯度経度が出ます。</div>
       <div id="map"></div>
+
       <table class="table">
-          <tr>
-            <th><%= f.label :猫の画像 %></th>
-            <th><%= f.file_field :image %></th>
-          </tr>
-          <tr>
-            <th><%= f.label :タイトル %></th>
-            <td><%= f.text_field :title %></td>
-          </tr>
-          <tr>
-            <th><%= f.label :内容 %></th>
-            <td><%= f.text_area :introduction,size: "20x5" %></td>
-            <td></td>
-          </tr>
-          <tr>
+        <tr>
+          <th><%= f.label :猫の画像 %></th>
+          <th><%= f.file_field :image %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :タイトル %></th>
+          <td><%= f.text_field :title %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :内容 %></th>
+          <td><%= f.text_area :introduction,size: "20x5" %></td>
+        </tr>
+        <tr>
           <th><%= f.label :ジャンル %></th>
           <td>
             <!--ジャンルから持ってきてジャンルを選択する-->
@@ -46,7 +48,7 @@
   </div>
 </div>
 
-<!--地図の大きさ-->
+<!--マップ用の記述-->
 <style>
 #map {
   height: 250px;

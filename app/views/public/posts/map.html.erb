@@ -1,19 +1,19 @@
 
   <div class="container">
-      <h4>MAP</h4>
-      <p>みんながみた猫の位置が表示されます。ピンをクリックすると投稿内容が表示されます。</p>
+    <h4>MAP</h4>
+    <p>みんながみた猫の位置が表示されます。ピンをクリックすると投稿内容が表示されます。</p>
   </div>
     <div id="map"></div>
 
 
-      <style>
+    <style>
       #map{
         height: 500px;
         width: auto;
       }
-      </style>
+    </style>
 
-      <script>
+    <script>
       function initMap(){
         // latlngで緯度経度を定義
         let latlng = {lat: 35.6761919, lng:139.6503106}
@@ -45,5 +45,5 @@
               }).open(marker.getMap(), marker);
           });
       }
-      </script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap" async defer></script>
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap" async defer></script>
