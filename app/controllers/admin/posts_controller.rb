@@ -21,18 +21,21 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def update
-    @post = Post.find(params[:id])
-    if @post.update(post_params)
-      redirect_to admin_post_path
-    else
-      render "edit"
-    end
-  end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+    flash[:alert] = "投稿を削除しました。"
     redirect_to admin_posts_path
   end
 end
+
+  # もし管理者が更新に使う場合
+  # def update
+  #   @post = Post.find(params[:id])
+  #   if @post.update(post_params)
+  #     redirect_to admin_post_path
+  #   else
+  #     render "edit"
+  #   end
+  # end

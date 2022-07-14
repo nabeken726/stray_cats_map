@@ -2,7 +2,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3" style="text-align: center;">
-      <h2>投稿詳細</h2>
+      <h2>猫の詳細</h2>
+      <div><%= image_tag @post.user.get_image,class: "rounded-circle", size: "150x150" %></div>
+      <p>投稿者</p>
     </div>
     <div class="col-md-6" style="text-align: center;">
       <div id="map"></div>

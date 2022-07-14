@@ -9,8 +9,8 @@
        これまでの投稿履歴が閲覧できなくなります。<br>
        退会する場合は、「退会する」をクリックしてください
       </p>
-      <%= link_to "退会する", withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" } %>
-      <%= link_to "退会しない", public_show_path(current_user) %>
+      <%= link_to "退会する", withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" },class: 'btn btn-danger' %>
+      <%= link_to "退会しない", public_show_path(current_user),class: 'btn btn-success ml-5' %>
     </div>
    </div>
 </div>

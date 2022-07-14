@@ -27,7 +27,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      flash[:notice] = "更新しました"
+      flash[:notice] = "更新しました。"
       redirect_to public_post_path(@post)
     else
       render "edit"
@@ -43,10 +43,10 @@ class Public::PostsController < ApplicationController
     @post.user_id = current_user.id
     @post.genre_id = params[:post][:genre_id]
     if @post.save
-      flash[:notice] = "投稿しました"
+      flash[:notice] = "投稿しました。"
       redirect_to public_post_path(@post)
     else
-      flash[:alert] = "投稿できませんでした"
+      flash[:alert] = "投稿できませんでした。"
       render "new"
     end
   end
@@ -54,7 +54,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    flash[:alert] = "投稿を削除しました"
+    flash[:alert] = "投稿を削除しました。"
     redirect_to public_posts_path
   end
 

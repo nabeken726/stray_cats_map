@@ -2,8 +2,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3" style="text-align: center;">
-      <h2>投稿一覧</h2>
-      <%= link_to "自分の投稿一覧へ",public_posts_my_index_path %>
+      <h2>猫一覧</h2>
+      <%= link_to "自分の猫一覧へ",public_posts_my_index_path %>
       <!--ジャンル検索のテンプレート-->
       <%= render "public/posts/genre_post", genres: @genres %>
     </div>
@@ -11,6 +11,7 @@
       <table class='table'>
         <thead>
           <tr>
+            <th>投稿者</th>
             <th>画像</th>
             <th>タイトル</th>
             <th>説明</th>
@@ -20,6 +21,7 @@
         <tbody>
           <% @posts.each do |post| %>
           <tr>
+            <td><%= image_tag post.user.get_image,class: "rounded-circle", size: "50x50" %></td>
             <td><%= image_tag post.image,:size =>'150x100' %></td>
             <td><%= link_to post.title, public_post_path(post) %></td>
             <td><%= post.introduction %></td>

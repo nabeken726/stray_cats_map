@@ -2,7 +2,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3" style="text-align: center;">
-      <h2><%= @user.name %>さん<br>の投稿一覧</h2>
+      <h2><%= @user.name %>さん<br>の猫一覧</h2>
+      <div><%= image_tag @user.get_image,class: "rounded-circle", size: "150x150" %></div>
     </div>
     <div class="col-md-8" style="text-align: center; margin-top: 50px;">
       <table class='table'>
@@ -10,7 +11,7 @@
           <tr>
             <th>画像</th>
             <th>タイトル</th>
-            <th>説明</th>
+            <th>内容</th>
             <th>ジャンル</th>
           </tr>
         </thead>
