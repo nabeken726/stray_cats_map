@@ -1,16 +1,13 @@
 
 <!--サインインした後にくるページなので-->
 <!--ユーザーの名前を入れてあげる-->
-<div class="container">
-  <div class="row">
+<div class="blend">
+  <div class="blend__text">
     <% if user_signed_in? %>
-      <h1>ようこそ！<%= @user.name %>さん</h1>
+      <h1>Welcome！</h1>
+      <p><%= @user.name %></p>
     <% else %>
-      <h1>ようこそ！</h1>
+      <h1>Welcome！</h1>
     <% end %>
-  </div>
-  <div>
-    <i class="fas fa-running fa-5x"></i>
-    <i class="fa-solid fa-cat"></i>
   </div>
 </div>

@@ -75,10 +75,10 @@ ActiveRecord::Schema.define(version: 2022_07_13_101901) do
   end
 
   create_table "looks", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.integer "post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id", "post_id"], name: "index_looks_on_user_id_and_post_id", unique: true
   end
 

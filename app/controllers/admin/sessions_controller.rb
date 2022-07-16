@@ -34,6 +34,6 @@ class Admin::SessionsController < Devise::SessionsController
 
   # 管理者ログアウト後の遷移先
   def after_sign_out_path_for(resource)
-    about_path
+    root_path
   end
 end

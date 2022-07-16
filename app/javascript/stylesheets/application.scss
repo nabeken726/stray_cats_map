@@ -13,6 +13,21 @@
   padding-bottom: 60px;
 }
 
+.blend{
+	position:relative;
+	width:auto; /*背景画像の横幅*/
+	height:auto; /*背景画像の縦幅*/
+	background-image: url("../images/top.jpg");
+}
+.blend__text{
+	font-size:70px;
+	font-weight:bold;
+	color:#3F3F3F;
+	text-align:center;
+	line-height: 480px; /*親要素の背景画像の縦幅*/
+	mix-blend-mode: difference; /*値を変更すれば様々な効果を与えられます*/
+}
+
 .ttl_read {
   font-size: 10px;
   padding-top: 0;
@@ -40,6 +55,8 @@ footer{
 
 .alert {
   margin-bottom: 0;
+  position: relative;
+    top: 15px;
 }
 
 table td {
@@ -60,7 +77,11 @@ table th {
   white-space: nowrap;
 }
 
-h1 {
+h3 {
   display: inline-block;
   background: linear-gradient(transparent 70%, #ffffc6 70%);
+}
+
+.card {
+  margin-top: 30px;
 }
