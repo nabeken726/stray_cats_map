@@ -47,7 +47,7 @@
             <li>
               <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
                 <i class="fas fa-sign-out-alt"></i>
-                Log Out
+                Log out
               <% end %>
             </li>
             <!-- ユーザーがログインしているかつ管理者の場合に表示 -->
@@ -79,7 +79,7 @@
             <li>
               <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-right-from-bracket"></i>
-                Log Out
+                Log out
               <% end %>
             </li>
           <!-- 未ログインの場合に表示 -->
@@ -105,13 +105,13 @@
             <li>
               <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-right-to-bracket" style="margin-right: 5px;"></i>
-                Log In
+                Log in
               <% end %>
             </li>
             <li>
               <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i>
-                Sign Up
+                Sign up
               <% end %>
             </li>
           <% end %>
