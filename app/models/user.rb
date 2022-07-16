@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :cutes,      dependent: :destroy
   has_many :looks,      dependent: :destroy
   # 名前のバリデーション※15文字まで
-  validates :name, presence: true, length: { maximum: 15 }
+  validates :name, presence: true, length: { minimum: 2,maximum: 15 }, uniqueness: true
 
   validates :email, presence: true, length: { maximum: 50 }
 

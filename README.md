@@ -41,3 +41,7 @@ PCの場合
 Google Chrome限定
 スマホ環境は未対応です。
 対応は検討中です。
+
+## 本来ならSQLでインサートしますが、今回の場合はseedsでインサート致します。
+Email: stray@cat,
+Password: mayoineko

@@ -19,7 +19,7 @@
             <tr>
               <td><%= image_tag post.image,:size =>'100x100' %></td>
               <td><%= link_to post.title, public_post_path(post) %></td>
-              <td><%= post.introduction %></td>
+              <td class="introduction"><%= post.introduction %></td>
               <td><%= post.genre.genre %></td>
           <% end %>
         <% else %>

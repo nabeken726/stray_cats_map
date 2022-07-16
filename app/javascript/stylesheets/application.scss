@@ -4,13 +4,19 @@
 
 .background {
   box-sizing: border-box;
-  background-image: url("../images/haikei_image.jpg");
+  background-image: url("../images/haikei1_image.jpg");
   background-size: cover;
   background-repeat: repeat;
   width: 100%;
   min-height: 100vh;
   background-attachment: fixed;
   padding-bottom: 60px;
+}
+
+.ttl_read {
+  font-size: 10px;
+  padding-top: 0;
+  display: block;
 }
 
 nav {
@@ -27,6 +33,14 @@ btn {
   border-radius: 4px;
 }
 
+footer{
+  padding-top: 10px;
+  height: 140px;
+}
+
+.alert {
+  margin-bottom: 0;
+}
 
 table td {
   word-break : break-all;
@@ -37,10 +51,16 @@ table th {
   white-space: nowrap;
 }
 
-.alert {
-  margin-bottom: 0;
+
+.introduction {
+  display: block;
+  width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-footer{
-  padding-top: 10px;
-  height: 140px;
+
+h1 {
+  display: inline-block;
+  background: linear-gradient(transparent 70%, #ffffc6 70%);
 }
