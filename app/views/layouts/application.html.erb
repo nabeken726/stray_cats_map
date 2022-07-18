@@ -11,8 +11,9 @@
   </head>
   <body>
       <%= render 'layouts/header' %>
-    <!--アラート用にmtを入れる-->
-    <div class="background">
+    <!--アラート用にptを入れる-->
+    <!--@topでtop画面にだけの背景画像-->
+    <div class="background<%=@top%>">
       <div class="pt-5">
         <%= yield %>
       </div>

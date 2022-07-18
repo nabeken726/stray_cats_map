@@ -2,6 +2,7 @@
   <table class="table table-inverse">
       <tr style="">
         <th></th>
+        <!--widthをあげて幅を追加-->
         <th width="20%">コメント投稿者</th>
         <th width="50%">コメント内容</th>
         <th width="20%">コメント日</th>
@@ -11,7 +12,6 @@
       <p>コメント件数：<%= post.comments.count %></p>
       <% post.comments.each do |comment| %>
       <tr style="">
-        <!--コメント投稿者の名前をとってきたい-->
         <td><%= image_tag comment.user.get_image,class: "rounded-circle", size: "50x50" %></td>
         <td><%= comment.user.name %></td>
         <td><%= comment.comment %></td>
@@ -27,3 +27,4 @@
       </tr>
     <% end %>
   </table>
+  

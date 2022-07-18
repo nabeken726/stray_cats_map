@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3" style="text-align: center; margin-top: 50px;">
-      <h2><%= @user.name %>さん<br>のユーザー情報編集</h2>
+      <h2>User Edit</h2>
     </div>
     <div class="col-md-6" style="margin-top: 50px;">
       <%= form_with model:@user, url:admin_user_path(@user.id) do |f| %>

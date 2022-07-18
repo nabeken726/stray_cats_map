@@ -21,7 +21,6 @@ class User < ApplicationRecord
   end
 
   # User画像のないときの処理
-  # class: "rounded-circle", size: "150x150"のクラスを当てる方法
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
