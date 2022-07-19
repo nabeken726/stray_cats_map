@@ -2,9 +2,10 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 
+// 全背景画像
 .background {
   box-sizing: border-box;
-  background-image: url("../images/haikei_image.jpg");
+  background-image: url("../images/haikei.jpg");
   background-size: cover;
   background-repeat: repeat;
   width: 100%;
@@ -12,10 +13,10 @@
   background-attachment: fixed;
   padding-bottom: 60px;
 }
-
+// トップだけの画像
 .background_top {
   box-sizing: border-box;
-  background-image: url("../images/top2.jpg");
+  background-image: url("../images/top.jpg");
   background-size: cover;
   background-repeat: repeat;
   width: 100%;
@@ -23,26 +24,18 @@
   background-attachment: fixed;
   padding-bottom: 60px;
 }
-
-// .blend{
-// 	position:relative;
-// 	width:auto; /*背景画像の横幅*/
-// 	background-image: url("../images/top2.jpg");
-// 	min-height: 100vh;
-// }
-
+// トップの文字
 .blend__text{
-	font-size: 50px;
 	font-weight: bold;
 	color:#3F3F3F;
 	text-align: center;
-	line-height: auto; /*親要素の背景画像の縦幅*/
-	mix-blend-mode: difference; /*値を変更すれば様々な効果*/
+	mix-blend-mode: difference;
 }
 
 .blend__text h1 {
-  font-size: 1000px;
+  font-size: 110px;
   font-family: 'Caveat', cursive;
+  margin-right: 55%;
 }
 
 .ttl_read {
@@ -60,6 +53,7 @@ body {
   padding-top: 56px;
   padding-bottom: 120px;
 }
+
 // ボタンのcss
 btn {
   border-radius: 4px;
@@ -76,10 +70,10 @@ footer{
     top: 15px;
 }
 
+// テーブル関連
 table td {
   word-break : break-all;
 }
-
 
 table th {
   white-space: nowrap;
