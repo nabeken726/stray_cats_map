@@ -1,17 +1,17 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-3" style="margin-top: 50px; text-align: center;">
-      <h2>マイページ</h2>
+    <div class="col-md-3" style="text-align: center;">
+      <h2>My Page</h2>
     </div>
     <div class="col-md-6" style="margin-top: 50px; text-align: center;">
       <table class="table table-inverse">
-        <th>プロフィールアイコン</th>
-          <td>
-            <%= image_tag @user.get_image,class: "rounded-circle", size: "150x150" %>
-          </td>
+        <tr>
+          <th>プロフィールアイコン</th>
+          <td><%= image_tag @user.get_image,class: "rounded-circle", size: "150x150" %></td>
         </tr>
-        <th>ニックネーム</th>
+        <tr>
+          <th>ニックネーム</th>
           <td><%= @user.name %></td>
         </tr>
         <tr>
@@ -21,7 +21,7 @@
       </table>
     </div>
     <div class="col-md-3" style="margin-top: 50px; text-align: center;">
-      登録情報
+      <br>
       <br>
       <%= link_to "編集",edit_public_user_path(current_user.id),class: 'btn btn-success' %>
     </div>

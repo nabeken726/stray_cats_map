@@ -1,0 +1,30 @@
+  <!--コメント機能-->
+  <table class="table table-inverse">
+      <tr style="">
+        <th></th>
+        <!--widthをあげて幅を追加-->
+        <th width="20%">コメント投稿者</th>
+        <th width="50%">コメント内容</th>
+        <th width="20%">コメント日</th>
+        <th width="10%"></th>
+      </tr>
+    <% if post.comments.present? %>
+      <p>コメント件数：<%= post.comments.count %></p>
+      <% post.comments.each do |comment| %>
+      <tr style="">
+        <td><%= image_tag comment.user.get_image,class: "rounded-circle", size: "50x50" %></td>
+        <td><%= comment.user.name %></td>
+        <td><%= comment.comment %></td>
+        <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+        <!--今ログインしているUserしか削除ボタンを表示させない。-->
+        <!--adiminも全て削除できるように nilで判定で!で反転させる　-->
+        <% if comment.user == current_user || !current_admin.blank? %>
+        <td><%= link_to "削除", public_post_comment_path(post, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %></td>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>コメントはまだありません</p>
+      </tr>
+    <% end %>
+  </table>
+  

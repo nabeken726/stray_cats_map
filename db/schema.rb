@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_05_012345) do
+ActiveRecord::Schema.define(version: 2022_07_13_101901) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,17 +56,30 @@ ActiveRecord::Schema.define(version: 2022_07_05_012345) do
     t.integer "user_id"
     t.integer "post_id"
     t.text "comment", null: false
-    t.integer "look"
-    t.integer "cute"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "genres", force: :cascade do |t|
+  create_table "cutes", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "post_id"], name: "index_cutes_on_user_id_and_post_id", unique: true
+  end
+
+  create_table "genres", force: :cascade do |t|
     t.string "genre", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "looks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "post_id"], name: "index_looks_on_user_id_and_post_id", unique: true
   end
 
   create_table "posts", force: :cascade do |t|
@@ -75,6 +88,9 @@ ActiveRecord::Schema.define(version: 2022_07_05_012345) do
     t.text "introduction", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "genre_id"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "user_posts", force: :cascade do |t|

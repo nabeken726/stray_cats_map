@@ -31,6 +31,11 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # binding.pry使うために
+  gem 'pry-rails'
+  # rubocop導入
+  gem 'rubocop-airbnb'
 end
 
 group :development do
@@ -46,10 +51,14 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver'
+  # gem 'capybara', '>= 3.26'
+  # gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
+  # gem 'webdrivers'
+  gem 'capybara'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -63,9 +72,7 @@ end
 
 # ログイン関連
 gem 'devise'
-# binding.pry使うために
-gem 'pry-rails'
-
+# script用未使用
 gem "gon"
 # ImageMagick用
 gem 'mini_magick'
@@ -73,3 +80,9 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 # 画像関係
 gem 'carrierwave'
+# 非同期通信用
+gem 'jquery-rails'
+# ページネーション
+gem 'kaminari','~> 1.2.1'
+# デバイス日本語化
+gem 'devise-i18n'

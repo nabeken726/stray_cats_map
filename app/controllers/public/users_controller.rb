@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
-
+  # User関連はUserのみにするように
+  before_action :authenticate_user!
   def index
     @users = User.all
   end
@@ -15,15 +16,26 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
+      flash[:notice] = "更新しました。"
       redirect_to public_show_path(@user)
     else
+      flash[:alert] = "更新に失敗しました。"
       render "edit"
     end
   end
 
-  private
-  def user_params
-  params.require(:user).permit(:name,:email,:image)
+  # 退会処理用の記述
+  def withdrawal
+    @user = User.find(params[:id])
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました。"
+    redirect_to root_path
   end
 
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :image)
+  end
 end

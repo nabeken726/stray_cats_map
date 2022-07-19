@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="text-align: center;">
+      <h2>User Details</h2>
+    </div>
+    <div class="col-md-6" style="margin-top: 50px;">
+    <table class="table table-inverse">
+      <tr>
+        <th>プロフィールアイコン</th>
+        <td><%= image_tag @user.get_image,class: "rounded-circle", size: "150x150" %></td>
+      </tr>
+      <tr>
+        <th>ユーザーID</th>
+        <td><%= @user.id %></td>
+      </tr>
+      <tr>
+        <th>ニックネーム</th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <th>ユーザーステータス</th>
+        <!--ステータスの記述を行う。-->
+        <% if @user.is_deleted == false %>
+            <td>有効</td>
+        <% else %>
+            <td>退会</td>
+        <% end %>
+      </tr>
+    </table>
+    </div>
+    <div class="col-md-3" style="margin-top: 50px;">
+      <table>
+        <tr>
+          <td>
+            <%= link_to "編集",edit_admin_user_path(@user),class: 'btn btn-success' %>
+          </td>
+        </tr>
+        <br>
+        <tr>
+          <td>
+          <%= link_to "ユーザー一覧", admin_users_path, class: 'btn btn-primary' %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

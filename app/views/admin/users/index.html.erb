@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="text-align: center;">
+      <h2>User's</h2>
+    </div>
+    <div class="col-md-6" style="text-align: center; margin-top: 50px;">
+      <table class='table table-hover table-inverse'>
+        <tr>
+          <th>ユーザーID</th>
+          <th>プロフィールアイコン</th>
+          <th>ニックネーム</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= image_tag user.get_image,class: "rounded-circle", size: "50x50" %></td>
+          <td><%= link_to user.name, admin_user_path(user.id) %></td>
+          <td><%= user.email %></td>
+          <% if user.is_deleted == false %>
+            <td>有効</td>
+          <% else %>
+            <td>退会</td>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
+      <div class="pagination" style="justify-content: center; margin-top: 30px;">
+       <!--ページネーション入れる-->
+      <p><%= paginate @users %></p>
+      </div>
+    </div>
+  </div>
+</div>

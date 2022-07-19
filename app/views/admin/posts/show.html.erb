@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" style="margin-top: 50px; text-align: center;">
+      <h2>Detail of Cat</h2>
+      <div><%= image_tag @post.user.get_image,class: "rounded-circle", size: "100x100" %></div>
+      <p>投稿者</p>
+    </div>
+    <div class="col-md-6" style="margin-top: 50px; text-align: center;">
+      <div id="map"></div>
+      <table class="table table-inverse">
+        <tr>
+          <th>画像</th>
+          <td><%= image_tag @post.image,:size =>'300x200' %></td>
+        </tr>
+        <tr>
+          <th>タイトル</th>
+          <td><%= @post.title %></td>
+        </tr>
+        <tr>
+          <th>内容</th>
+          <td><%= @post.introduction %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @post.genre.genre %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-3" style="margin-top: 50px; text-align: center;">
+      <%= link_to '削除', admin_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？', class: 'btn-sm btn-danger' }, class: "btn btn-sm btn-danger"%>
+    </div>
+  </div>
+
+  <div class="col-md-12" style="margin-top: 50px; text-align: left;">
+    <!--コメントのテンプレート-->
+    <div id="comments_area">
+      <%= render 'public/comments/post_comments', post: @post, comments: @comments %>
+    </div>
+  </div>
+
+<!--マップの記述-->
+<style>
+#map{
+  height: 250px;
+  width: auto;
+}
+</style>
+
+<script>
+function initMap(){
+  // latlngで緯度経度を定義
+  let latlng = {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}
+  let map = new google.maps.Map(document.getElementById('map'), {
+    center: latlng,
+    zoom: 15
+  });
+  let marker = new google.maps.Marker({
+                     position: latlng,
+                     map: map
+                   });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap" async defer></script>

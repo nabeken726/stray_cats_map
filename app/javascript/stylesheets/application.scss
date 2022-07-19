@@ -1,2 +1,108 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+// 全背景画像
+.background {
+  box-sizing: border-box;
+  background-image: url("../images/haikei.jpg");
+  background-size: cover;
+  background-repeat: repeat;
+  width: 100%;
+  min-height: 100vh;
+  background-attachment: fixed;
+  padding-bottom: 60px;
+}
+// トップだけの画像
+.background_top {
+  box-sizing: border-box;
+  background-image: url("../images/top.jpg");
+  background-size: cover;
+  background-repeat: repeat;
+  width: 100%;
+  min-height: 100vh;
+  background-attachment: fixed;
+  padding-bottom: 60px;
+}
+// トップの文字
+.blend__text{
+	font-weight: bold;
+	color:#3F3F3F;
+	text-align: center;
+	mix-blend-mode: difference;
+}
+
+.blend__text h1 {
+  font-size: 110px;
+  font-family: 'Caveat', cursive;
+  margin-right: 55%;
+}
+
+.ttl_read {
+  font-size: 10px;
+  padding-top: 0;
+  display: block;
+}
+
+nav {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+}
+
+body {
+  padding-top: 56px;
+  padding-bottom: 120px;
+}
+
+// ボタンのcss
+btn {
+  border-radius: 4px;
+}
+
+footer{
+  padding-top: 10px;
+  height: 140px;
+}
+
+.alert {
+  margin-bottom: 0;
+  position: relative;
+    top: 15px;
+}
+
+// テーブル関連
+table td {
+  word-break : break-all;
+}
+
+table th {
+  white-space: nowrap;
+}
+
+
+.introduction {
+  display: block;
+  width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+h2 {
+  font-family: 'Caveat', cursive;
+}
+
+h3 {
+  display: inline-block;
+  background: linear-gradient(transparent 70%, #ffffc6 70%);
+}
+
+.card {
+  margin-top: 30px;
+}
+
+.card h2 {
+  
+  display: inline-block;
+  background: linear-gradient(transparent 70%, #ffffc6 70%);
+}

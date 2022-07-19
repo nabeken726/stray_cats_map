@@ -1,31 +1,81 @@
-<h1>JSONで実装できなかった時に投稿詳細を見るページ</h1>
+
 <div class="container">
   <div class="row">
-    <div class="col-md-3" style="margin-top: 50px; text-align: center;">
-      <h2>投稿詳細</h2>
+    <div class="col-md-3" style="text-align: center;">
+      <h2>Cat Details</h2>
+      <div><%= image_tag @post.user.get_image,class: "rounded-circle", size: "100x100" %></div>
+      <p>投稿者</p>
     </div>
-    <div class="col-md-6" style="margin-top: 50px; text-align: center;">
+    <div class="col-md-6" style="text-align: left;">
+      <div id="map"></div>
       <table class="table table-inverse">
-        <th>画像</th>
-          <td>
-            <%= image_tag @post.image.variant(resize:'200x200') %>
-          </td>
+        <tr>
+          <th>画像</th>
+          <td><%= image_tag @post.image,:size =>'300x200' %></td>
         </tr>
-        <th>タイトル</th>
+        <tr>
+          <th>タイトル</th>
           <td><%= @post.title %></td>
         </tr>
         <tr>
           <th>内容</th>
           <td><%= @post.introduction %></td>
         </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @post.genre.genre %></td>
+        </tr>
+        <tr>
+          <!--cute,look機能のテンプレート-->
+          <th id="cute_buttons_<%= @post.id %>">
+            <%= render "public/cutes/button", post: @post %>
+          </th>
+          <th id="look_buttons_<%= @post.id %>">
+            <%= render "public/looks/button", post: @post %>
+          </th>
+        </tr>
       </table>
     </div>
-    <div class="col-md-3" style="margin-top: 50px; text-align: center;">
-      登録情報
-      <br>
-      <%= link_to "編集",edit_public_post_path,class: 'btn btn-success' %>
-      <br>
+
+    <div class="col-md-3" style="text-align: center;">
+      <% if @post.user == current_user %>
+      <%= link_to "編集",edit_public_post_path,class: 'btn btn-success' %><br><br>
       <%= link_to '削除', public_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？', class: 'btn-sm btn-danger' }, class: "btn btn-sm btn-danger"%>
+      <% end %>
     </div>
   </div>
-</div>
+
+  <!--コメントのテンプレート-->
+  <div class="col-md-12" style="margin-top: 50px; text-align: center;">
+    <div class="new-comment">
+      <%= render 'public/comments/form', post: @post, comment: @comment %>
+    </div>
+    <div id="comments_area" style="text-align: left;">
+      <%= render 'public/comments/post_comments', post: @post, comments: @comments %>
+    </div>
+  </div>
+
+
+<!--マップ用の記述-->
+<style>
+#map{
+  height: 250px;
+  width: auto;
+}
+</style>
+
+<script>
+function initMap(){
+  // latlngで緯度経度を定義
+  let latlng = {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}
+  let map = new google.maps.Map(document.getElementById('map'), {
+    center: latlng,
+    zoom: 15
+  });
+  let marker = new google.maps.Marker({
+                     position: latlng,
+                     map: map
+                   });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap" async defer></script>

@@ -1,15 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3" style="margin-top: 50px; text-align: center;">
-      <h2>ジャンル作成</h2>
-      <!-- ヘルパーメソッド呼び出し-->
+    <div class="col-md-3" style="text-align: center;">
+      <h2>Genre creation</h2>
       <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
         <%= f.text_field :genre, class: 'form-control' %>
         <br>
         <%= f.submit '新規登録', class: 'btn btn-primary' %>
       <% end %>
     </div>
-    <div class="col-md-6" style="margin-top: 50px; text-align: center;">
+    <div class="col-md-6 ml-5" style="margin-top: 50px; text-align: center;">
       <table class='table table-inverse'>
         <thead>
           <tr>
@@ -18,18 +17,12 @@
           </tr>
         </thead>
         <tbody>
-          <!-- 作成されたジャンルを一つずつ取り出す -->
           <% @genres.each do |genre| %>
           <tr>
             <td>
-              <span>
-                <!-- ジャンルの表示 -->
-                <%= genre.genre %>
-              </span>
-              <br>
+              <%= genre.genre %>
             </td>
             <td>
-              <!-- 削除リンクの -->
               <%= link_to '編集', edit_admin_genre_path(genre), class: 'btn btn-success' %>
               <%= link_to '削除', admin_genre_path(genre), method: :delete, data: {comfirm: '本当に削除しますか？', class: 'btn-sm btn-danger'}, class: 'btn btn-danger' %>
             </td>

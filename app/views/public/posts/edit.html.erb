@@ -2,44 +2,100 @@
   <%= form_with model: @post, url: public_post_path, method: :patch do |f| %>
   <div class="row">
     <div class="col-md-3" style="margin-top: 50px; text-align: center;">
-      <h2>投稿編集</h2>
+      <h2>Cat Edit</h2>
     </div>
     <div class="col-md-8" style="margin-top: 50px;">
+      <!--マップ用の記述-->
+      <h2>MAP</h2>
+      <input id="address" type="textbox" value="東京都">
+      <input type="button" value="行ってみる" onclick="codeAddress()">
+      <div id="display">ここに緯度経度が出ます。</div>
+      <div id="map"></div>
+
       <table class="table">
-        <div class="field">
           <tr>
             <th><%= f.label :画像 %></th>
-            <th>
-                <%= f.file_field :image %>
-            </th>
+            <td><%= f.file_field :image %></td>
           </tr>
           <tr>
-            <th>
-              <%= f.label :タイトル %>
-            </th>
-            <td>
-              <%= f.text_field :title %>
-            </td>
+            <th><%= f.label :タイトル %></th>
+            <td><%= f.text_field :title %></td>
           </tr>
-        </div>
-        <div class="field">
           <tr>
-            <th>
-              <%= f.label :内容 %>
-            </th>
-            <td>
-              <%= f.text_field :introduction %>
-            </td>
-            <td></td>
+            <th><%= f.label :内容 %></th>
+            <td><%= f.text_area :introduction,size: "25x5" %></td>
           </tr>
-        </div>
+          <tr>
+            <th><%= f.label :ジャンル %></th>
+            <th><%= f.collection_select(:genre_id, Genre.all, :id, :genre, prompt: "--選択してください--")  %></th>
+          </tr>
       </table>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12" style="text-align: center;">
-      <%= f.submit "編集内容を保存" %>
+      <!--hidden_fieldで緯度経度を入れてあげる-->
+      <%= f.hidden_field :latitude %>
+      <%= f.hidden_field :longitude %>
+      <%= f.submit "編集内容を保存",class: 'btn btn-success' %>
       <% end %>
     </div>
   </div>
 </div>
+
+<!--マップ用の記述-->
+<style>
+#map{
+  height: 250px;
+  width: auto;
+}
+</style>
+
+<script>
+let map
+let geocoder
+const display = document.getElementById('display')
+let marker
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+  // 初期表示位置
+  map = new google.maps.Map(document.getElementById('map'), {
+    // 投稿した時の初期位置
+    center: {lat: <%= @post.latitude %>, lng: <%= @post.longitude %>},
+    zoom: 12,
+  });
+  // ピンの初期位置
+  // marker = new google.maps.Marker({
+  //   position:  {lat: 35.6761919, lng:139.6503106},
+  //   map: map
+  // });
+}
+
+function codeAddress(){
+  let inputAddress = document.getElementById('address').value;
+
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+      // markerが移動した時に空になるようnull
+      if (marker != null) {
+        marker.setMap(null);
+      }
+      marker = null;
+
+      map.setCenter(results[0].geometry.location);
+      marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+      display.textContent = "検索結果：" + results[0].geometry.location
+      // 検索結果からlatlngを入れてあげる
+      $('#post_latitude').val(results[0].geometry.location.lat())
+      $('#post_longitude').val(results[0].geometry.location.lng())
+    } else {
+      alert('該当する結果がありませんでした：' + status);
+    }
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['SECRET_KEY'] %>&callback=initMap" async defer></script>

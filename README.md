@@ -1,8 +1,6 @@
 # サイト名
 Stray Cat's MAP
-
-7月20日前後にtop画面を
-記載致します。
+<img width="1440" alt="スクリーンショット 2022-07-19 15 07 45" src="https://user-images.githubusercontent.com/103093739/179677591-668ddba0-655a-49cf-8f77-1a5094940378.png">
 
 ## サイト概要
 ### サイトテーマ
@@ -33,7 +31,9 @@ Stray Cat's MAP
 - IDE：Cloud9
 
 ## 使用素材
-- サイトのせる　URL+「これを使用する想定です。」
+- 「Photock」  　https://www.photock.jp/list/k/%E9%87%8E%E8%89%AF%E7%8C%AB/
+- 「Pixabay」    https://pixabay.com/
+- 「sozai-good」 https://sozai-good.com/
 - 随時使用したものが増えた場合は記載していきます。
 
 ## 閲覧環境
@@ -41,3 +41,8 @@ PCの場合
 Google Chrome限定
 スマホ環境は未対応です。
 対応は検討中です。
+
+## 本来ならSQLでインサートしますが、今回の場合はseedsでインサート致します。
+管理者Pass
+Email: stray@cat
+Password: mayoineko
