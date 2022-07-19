@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-      <%= render 'layouts/header' %>
+    <%= render 'layouts/header' %>
     <!--アラート用にptを入れる-->
     <!--@topでtop画面にだけの背景画像-->
     <div class="background<%=@top%>">
@@ -18,6 +18,6 @@
         <%= yield %>
       </div>
     </div>
-      <%= render 'layouts/footer' %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
