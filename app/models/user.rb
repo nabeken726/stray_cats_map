@@ -10,10 +10,9 @@ class User < ApplicationRecord
   has_many :comments,   dependent: :destroy
   has_many :cutes,      dependent: :destroy
   has_many :looks,      dependent: :destroy
-  # 名前のバリデーション※15文字まで
-  validates :name, presence: true, length: { minimum: 2,maximum: 15 }, uniqueness: true
 
-  validates :email, presence: true, length: { maximum: 50 }
+  # 名前のバリデーション※15文字まで 他のニックネームと被らないように
+  validates :name, presence: true, length: { minimum: 2,maximum: 15 }, uniqueness: true
 
   # 退会したユーザーがログインできないように
   def active_for_authentication?

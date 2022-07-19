@@ -1,4 +1,5 @@
 class Public::LooksController < ApplicationController
+  before_action :authenticate_user!
   def create
     @post = Post.find(params[:post_id])
     look = current_user.looks.new(post_id: @post.id)
