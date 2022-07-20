@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   has_one_attached :image
 
-  has_many :user_posts, dependent: :destroy
   has_many :comments,   dependent: :destroy
   has_many :cutes,      dependent: :destroy
   has_many :looks,      dependent: :destroy

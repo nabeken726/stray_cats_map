@@ -1,5 +1,8 @@
 class Public::CommentsController < ApplicationController
-  before_action :authenticate_user!
+  # 管理者が削除できるように
+  before_action :authenticate_all_user,only: [:destroy]
+  before_action :authenticate_user!,only: [:create]
+
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)

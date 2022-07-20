@@ -4,7 +4,6 @@ class Post < ApplicationRecord
   belongs_to :genre
   belongs_to :user
 
-  has_many :user_posts, dependent: :destroy
   has_many :comments,   dependent: :destroy
   has_many :cutes,      dependent: :destroy
   has_many :looks,      dependent: :destroy

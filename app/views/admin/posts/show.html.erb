@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3" style="margin-top: 50px; text-align: center;">
+    <div class="col-md-3" style="text-align: center;">
       <h2>Detail of Cat</h2>
       <div><%= image_tag @post.user.get_image,class: "rounded-circle", size: "100x100" %></div>
       <p>投稿者</p>
     </div>
-    <div class="col-md-6" style="margin-top: 50px; text-align: center;">
+    <div class="col-md-6" style="text-align: center;">
       <div id="map"></div>
       <table class="table table-inverse">
         <tr>
@@ -23,6 +23,10 @@
         <tr>
           <th>ジャンル</th>
           <td><%= @post.genre.genre %></td>
+        </tr>
+        <tr>
+          <th><i class="fa-brands fa-gratipay"></i><%= @post.cutes.count %> かわいい</td>
+          <th><i class="fa-solid fa-eye"></i><%= @post.looks.count %> 見た</td>
         </tr>
       </table>
     </div>

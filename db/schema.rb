@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_13_101901) do
+ActiveRecord::Schema.define(version: 2022_07_20_112922) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -75,10 +75,10 @@ ActiveRecord::Schema.define(version: 2022_07_13_101901) do
   end
 
   create_table "looks", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "post_id"
     t.index ["user_id", "post_id"], name: "index_looks_on_user_id_and_post_id", unique: true
   end
 
@@ -91,13 +91,6 @@ ActiveRecord::Schema.define(version: 2022_07_13_101901) do
     t.integer "genre_id"
     t.float "latitude"
     t.float "longitude"
-  end
-
-  create_table "user_posts", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

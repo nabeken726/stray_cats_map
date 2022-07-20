@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   # 論理削除用のルーティング
   patch 'public/users/:id/withdrawal' => 'public/users#withdrawal', as: 'withdrawal'
 
-  # 仮ルーティングMAP用
+  #MAP用
   get 'admin/posts/map'
   get 'public/posts/map'
   get 'public/posts/my_index'
