@@ -8,6 +8,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
+    @user = current_user
     @genres = Genre.all
     # 退会しているuserの投稿は取得しない
     @posts = Post.narrow_down.page(params[:page]).per(10)
@@ -60,6 +61,19 @@ class Public::PostsController < ApplicationController
 
   def map
     @posts = Post.all
+  end
+
+  # かわいい、見た機能の投稿一覧
+  def cutes
+    @user = User.find(params[:id])
+    cutes = Cute.where(user_id: @user.id).pluck(:post_id)
+    @cute_posts = Post.find(cutes)
+  end
+
+  def looks
+    @user = User.find(params[:id])
+    looks = Look.where(user_id: @user.id).pluck(:post_id)
+    @look_posts = Post.find(looks)
   end
 
   private

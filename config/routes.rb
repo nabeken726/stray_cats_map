@@ -50,10 +50,15 @@ Rails.application.routes.draw do
       # 見た、かわいいボタン用
       resources :looks, only: [:create, :destroy]
       resources :cutes, only: [:create, :destroy]
+      member do
+        get :cutes
+        get :looks
+      end
       # コメント用
       resources :comments, only: [:create, :destroy]
     end
     resources :users, except: [:index, :show]
+
     get 'users' => 'users#show', as: 'show'
   end
 
