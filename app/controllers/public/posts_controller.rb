@@ -15,7 +15,12 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    # 削除したページに戻らないように
+    @post = Post.find_by(id: params[:id])
+    if @post == nil
+      redirect_to public_posts_path
+      return
+    end
     # コメント用
     @comment = Comment.new
     @comments = @post.comments
@@ -75,6 +80,7 @@ class Public::PostsController < ApplicationController
     looks = Look.where(user_id: @user.id).pluck(:post_id)
     @look_posts = Post.find(looks)
   end
+
 
   private
 

@@ -11,7 +11,12 @@ class Admin::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    # 削除したページに戻らないように
+    @post = Post.find_by(id: params[:id])
+    if @post == nil
+      redirect_to admin_posts_path
+      return
+    end
     # コメント用
     @comment = Comment.new
     @comments = @post.comments

@@ -58,6 +58,8 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     resources :users, except: [:index, :show]
+    # 検索用
+    get "search" => "searches#search_result"
 
     get 'users' => 'users#show', as: 'show'
   end
