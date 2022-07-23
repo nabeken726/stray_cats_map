@@ -2,9 +2,6 @@
   <div class="search_form">
     <%= form_with url: public_search_path, local: true, method: :get do |f| %>
       <%= f.text_field :word %>
-      <!--hidden_fieldでPost,部分一致にできないか-->
-      <%= f.select :range, options_for_select([['Post']]) %>
-      <%= f.select :search, options_for_select([["部分一致","partial_match"]]) %>
       <%= f.submit "検索", class: "btn btn-primary" %>
     <% end %>
   </div>
