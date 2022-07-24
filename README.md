@@ -35,6 +35,7 @@ Stray Cat's MAP
 - 「Pixabay」        https://pixabay.com/
 - 「sozai-good」     https://sozai-good.com/
 - 「フリー素材.com」 https://free-materials.com/
+- 「ぱくたそ」       https://www.pakutaso.com/
 - 随時使用したものが増えた場合は記載していきます。
 
 ## 閲覧環境
