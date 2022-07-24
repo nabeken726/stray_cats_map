@@ -43,7 +43,6 @@ Google Chrome限定
 スマホ環境は未対応です。
 対応は検討中です。
 
-## 本来ならSQLでインサートしますが、今回の場合はseedsでインサート致します。
-管理者Pass
+## 管理者Pass
 Email: stray@cat
 Password: mayoineko

@@ -13,6 +13,7 @@
           <th>画像</th>
           <th>タイトル</th>
           <th>内容</th>
+          <th>投稿日</th>
           <th>ジャンル</th>
         </tr>
       <!--投稿がない場合の分岐-->
@@ -22,6 +23,7 @@
               <td><%= image_tag post.image,:size =>'100x100' %></td>
               <td><%= link_to post.title, public_post_path(post) %></td>
               <td class="introduction"><%= post.introduction %></td>
+              <td class="day"><%= post.created_at.strftime('%Y/%m/%d') %></td>
               <td><%= post.genre.genre %></td>
           <% end %>
         <% else %>

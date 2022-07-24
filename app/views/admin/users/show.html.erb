@@ -22,6 +22,10 @@
         <td><%= @user.email %></td>
       </tr>
       <tr>
+        <th>登録日</th>
+        <td><%= @user.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+      <tr>
         <th>ユーザーステータス</th>
         <!--ステータスの記述を行う。-->
         <% if @user.is_deleted == false %>
