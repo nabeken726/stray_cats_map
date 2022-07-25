@@ -1,10 +1,10 @@
 <!--見たボタンとかわいいボタンの部分テンプレート-->
-  <% if post.cuted_by?(current_user) %>
-    <%= link_to public_post_cute_path(post, id: post.id), method: :delete, remote: true do %>
-      <i class="fa-brands fa-gratipay"></i><%= post.cutes.count %> かわいい
-    <% end %>
-  <% else %>
-    <%= link_to public_post_cutes_path(post), method: :post, remote: true do %>
-      <i class="fa-brands fa-gratipay"></i><%= post.cutes.count %> かわいい
-    <% end %>
+<% if post.cuted_by?(current_user) %>
+  <%= link_to public_post_cute_path(post, id: post.id), method: :delete, remote: true do %>
+    <i class="fa-brands fa-gratipay"></i><%= post.cutes.count %> かわいい
   <% end %>
+<% else %>
+  <%= link_to public_post_cutes_path(post), method: :post, remote: true do %>
+    <i class="fa-brands fa-gratipay"></i><%= post.cutes.count %> かわいい
+  <% end %>
+<% end %>

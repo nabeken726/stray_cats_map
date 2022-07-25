@@ -45,9 +45,7 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
-    @post.genre_id = params[:post][:genre_id]
+    @post = Post.initialize_with_association(post_params, current_user.id, params[:post][:genre_id])
     if @post.save
       flash[:notice] = "投稿しました。"
       redirect_to public_post_path(@post)

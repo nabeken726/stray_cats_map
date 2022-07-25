@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
   # 会員側
   namespace :public do
-    resources :homes, only: [:top, :about]
+    resources :homes, only: [:top, :about] # %i(top about)
     resources :genres, only: [:index]
     resources :posts do
       # 見た、かわいいボタン用

@@ -28,11 +28,7 @@
       <tr>
         <th>ユーザーステータス</th>
         <!--ステータスの記述を行う。-->
-        <% if @user.is_deleted == false %>
-            <td>有効</td>
-        <% else %>
-            <td>退会</td>
-        <% end %>
+        <td><%= user_status(@user) %></td>
       </tr>
     </table>
     </div>
@@ -40,7 +36,7 @@
       <table>
         <tr>
           <td>
-            <%= link_to "編集",edit_admin_user_path(@user),class: 'btn btn-success' %>
+            <%= link_to "編集", edit_admin_user_path(@user), class: 'btn btn-success' %>
           </td>
         </tr>
         <br>
