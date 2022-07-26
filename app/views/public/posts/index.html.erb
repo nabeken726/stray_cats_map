@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-md-3" style="text-align: center;">
       <h2>Cat's</h2>
-      <p><%= link_to "My Cat's",public_posts_my_index_path, style:"font-family: Caveat; font-size: 20px;" %></p>
+      <p><%= link_to "My Cat's",public_posts_my_index_path, style: "font-family: Caveat; font-size: 20px;" %></p>
       <!--ジャンル検索のテンプレート-->
       <%= render "public/posts/genre_post", genres: @genres %>
     </div>
@@ -20,7 +20,7 @@
         <% @posts.each do |post| %>
         <tr>
           <td><%= image_tag post.user.get_image,class: "rounded-circle", size: "50x50" %></td>
-          <td><%= image_tag post.image,:size =>'150x100' %></td>
+          <td><%= image_tag post.image, size: '150x100' %></td>
           <td><%= link_to post.title, public_post_path(post) %></td>
           <td class="introduction"><%= post.introduction %></td>
           <td class="day"><%= post.created_at.strftime('%Y/%m/%d') %></td>

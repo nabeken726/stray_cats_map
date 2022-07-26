@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     sessions: "admin/sessions",
   }
 
+  # ゲストログイン用
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   # ここからは通常のルーティング
   root to: 'public/homes#top'
   get 'public/homes/about' => 'public/homes#about', as: 'about'

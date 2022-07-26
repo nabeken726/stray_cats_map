@@ -24,6 +24,12 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+ # ゲストログイン用
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to public_show_path, notice: 'ゲストユーザーでログインしました。'
+  end
 
   protected
 
@@ -39,6 +45,7 @@ class Public::SessionsController < Devise::SessionsController
       end
     end
   end
+
 
   # Userログイン後の遷移先
   def after_sign_in_path_for(resource)
