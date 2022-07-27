@@ -1,7 +1,7 @@
 class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
 
-  # 管理者権限でしようする場合
+  # 管理者権限で使用する場合
   def map
     @posts = Post.all
   end
@@ -13,7 +13,7 @@ class Admin::PostsController < ApplicationController
   def show
     # 削除したページに戻らないように
     @post = Post.find_by(id: params[:id])
-    if @post == nil
+    unless @post
       redirect_to admin_posts_path
       return
     end

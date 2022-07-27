@@ -17,8 +17,9 @@ class Public::PostsController < ApplicationController
   def show
     # 削除したページに戻らないように
     @post = Post.find_by(id: params[:id])
-    if @post == nil
+    unless @post
       redirect_to public_posts_path
+      # 処理を抜ける
       return
     end
     # コメント用
@@ -45,6 +46,7 @@ class Public::PostsController < ApplicationController
   end
 
   def create
+    # 引数に設定
     @post = Post.initialize_with_association(post_params, current_user.id, params[:post][:genre_id])
     if @post.save
       flash[:notice] = "投稿しました。"

@@ -20,7 +20,7 @@ class Post < ApplicationRecord
 
   # 絞り込みのためのスコープ 退会済を弾く
   scope :narrow_down, -> { where.not(user_id: User.where(is_deleted: true).ids) }
-  
+
   # 部分一致のみ
   def self.looks(search, word)
     if search == "partial_match"
@@ -29,13 +29,15 @@ class Post < ApplicationRecord
       @post = Post.all
     end
   end
-  
+
+  # 新規作成時に使用
+  # 引数を与えてpostに格納してあげる
   def self.initialize_with_association(params, user_id, genre_id)
     post = new(params)
     post.user_id = user_id
     post.genre_id = genre_id
     post
-    
+
     # new(params).tap do |pst|
     #   pst.user_id = user_id
     #   pst.genre_id = genre_id
