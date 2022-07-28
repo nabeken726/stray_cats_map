@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :public do
+    get 'relationships/followings'
+    get 'relationships/followers'
+  end
+  namespace :public do
     get 'genres/show'
   end
   # ここはdeviseのルーティング
@@ -27,6 +31,9 @@ Rails.application.routes.draw do
 
   get 'public/infos/hogo', as: :hogo
   get 'public/infos/nora', as: :nora
+
+  get 'public/ranks/cute_rank'
+  get 'public/ranks/look_rank'
 
   # 退会確認画面
   get 'public/users/:id/unsubscribe' => 'public/users#unsubscribe', as: 'unsubscribe'
@@ -62,12 +69,17 @@ Rails.application.routes.draw do
       # コメント用
       resources :comments, only: [:create, :destroy]
     end
-    resources :users, except: [:index, :show]
+    resources :users, except: [:index, :show] do
+      # フォロー、フォロワー用
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'public/relationships#followings', as: 'followings'
+      get 'followers' => 'public/relationships#followers', as: 'followers'
+    end
     # 検索用
     get "search" => "searches#search_result"
 
     get 'users' => 'users#show', as: 'show'
-  end
+    end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

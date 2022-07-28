@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row">
     <div class="col-md-3" style="text-align: center;">
@@ -26,7 +25,7 @@
             <td><%= image_tag post.image, size: '150x100' %></td>
             <td><%= link_to post.title, public_post_path(post) %></td>
             <td class="introduction"><%= post.introduction %></td>
-            <td class="day"><%= post.created_at.strftime('%Y/%m/%d') %></td>
+            <td class="day"><%= l post.created_at, format: :short %></td>
             <td><%= post.genre.genre %></td>
           </tr>
           <% end %>

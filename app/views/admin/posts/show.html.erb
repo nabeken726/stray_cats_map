@@ -27,7 +27,7 @@
         </tr>
         <tr>
           <th>投稿日</th>
-          <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= l @post.created_at, format: :short %></td>
         </tr>
         <tr>
           <th><i class="fa-brands fa-gratipay"></i><%= @post.cutes.count %> かわいい</td>
