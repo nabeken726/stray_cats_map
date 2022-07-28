@@ -1,0 +1,4 @@
+<%= form_with model: post, url: public_sort_path, method: :get, local: true do |f| %>
+  <%= f.select :word, [['投稿が新しい順', 'new'], ['投稿が古い順', 'old'], ['かわいいが多い順', 'cutes'], ['見たが多い順', 'looks']], include_blank: "選択して下さい" %>
+  <%= f.submit '送信'%>
+<% end %>

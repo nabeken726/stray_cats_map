@@ -19,6 +19,17 @@
           <th>メールアドレス</th>
           <td><%= @user.email %></td>
         </tr>
+        <tr>
+          <td>フォロー数: <%= @user.followings.count %></td>
+          <td>フォロワー数: <%= @user.followers.count %></td>
+        </tr>
+        <tr>
+          <!--現在ログインしているユーザーには出ないようにする。-->
+          <% unless current_user == @user %>
+          <!--フォローリンクテンプレート-->
+          <td><%= render "public/relationships/follow_set", user: @user %></td>
+          <% end %>
+        </tr>
       </table>
     </div>
     <% if @user.name != "guestuser" %>
@@ -30,5 +41,6 @@
     <% end %>
   </div>
 </div>
+
 
 

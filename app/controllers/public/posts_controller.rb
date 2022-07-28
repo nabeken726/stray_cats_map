@@ -14,6 +14,18 @@ class Public::PostsController < ApplicationController
     @posts = Post.narrow_down.page(params[:page]).per(10)
   end
 
+  def sort_index
+    @genres = Genre.all
+    selection = params[:word]
+    if selection.blank?
+      flash[:notice] = "選択して下さい。"
+      # 前のページに戻す処理
+      redirect_back(fallback_location: root_path)
+    else
+      @posts = Post.sort(selection).narrow_down.page(params[:page]).per(10)
+    end
+  end
+
   def show
     # 削除したページに戻らないように
     @post = Post.find_by(id: params[:id])

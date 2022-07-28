@@ -77,7 +77,8 @@ Rails.application.routes.draw do
     end
     # 検索用
     get "search" => "searches#search_result"
-
+    # ソート用
+    get 'sort' => 'posts#sort_index'
     get 'users' => 'users#show', as: 'show'
     end
 

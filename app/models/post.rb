@@ -21,6 +21,22 @@ class Post < ApplicationRecord
   # 絞り込みのためのスコープ 退会済を弾く
   scope :narrow_down, -> { where.not(user_id: User.where(is_deleted: true).ids) }
 
+  # ソート用
+  def self.sort(selection)
+    # セレクトボタンの文字と一致した場合の処理
+    case selection
+    when 'new'
+      return all.order(created_at: :DESC)
+    when 'old'
+      return all.order(created_at: :ASC)
+      # sqlインジェクション
+    when 'cutes'
+      return find(Cute.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+    when 'looks'
+      return find(Look.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+    end
+  end
+
   # 部分一致のみ
   def self.looks(search, word)
     if search == "partial_match"

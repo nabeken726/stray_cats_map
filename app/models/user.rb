@@ -19,6 +19,9 @@ class User < ApplicationRecord
   
   # 名前のバリデーション※15文字まで 他のニックネームと被らないように
   validates :name, presence: true, length: { minimum: 2,maximum: 15 }, uniqueness: true
+  
+  # 絞り込みのためのスコープ 退会済を弾く
+  scope :narrow_down, -> { where.not(user_id: User.where(is_deleted: true).ids) }
 
   # 退会したユーザーがログインできないように
   def active_for_authentication?

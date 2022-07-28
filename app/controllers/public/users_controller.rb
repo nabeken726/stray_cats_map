@@ -4,11 +4,12 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
 
   def index
-    @users = User.all
+
   end
 
   def show
     @user = current_user
+    # @user = User.find(params[:id])
   end
 
   def edit
@@ -41,7 +42,7 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :image)
   end
-  
+
   # ログインしているユーザーがguestuserだったらeditさせない
   def ensure_guest_user
     if current_user.name == "guestuser"
