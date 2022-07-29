@@ -62,6 +62,7 @@ Rails.application.routes.draw do
       # 見た、かわいいボタン用
       resources :looks, only: [:create, :destroy]
       resources :cutes, only: [:create, :destroy]
+      resources :contacts, only: [:new, :create]
       member do
         get :cutes
         get :looks
@@ -75,6 +76,8 @@ Rails.application.routes.draw do
       get 'followings' => 'public/relationships#followings', as: 'followings'
       get 'followers' => 'public/relationships#followers', as: 'followers'
     end
+    # お問合せ用
+    resources :contacts, only: [:new, :create]
     # 検索用
     get "search" => "searches#search_result"
     # ソート用
