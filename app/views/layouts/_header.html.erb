@@ -8,6 +8,7 @@
         <span><i class="fa-solid fa-paw"style="margin-right: 5px;"></i>Stray Cat's MAP<i class="fa-solid fa-paw"style="margin-left: 5px;"></i></span><br>
         <span class="ttl_read">この世界にはたくさんの猫たちがいます。さぁ一緒に探しに行きませんか？</span>
       </a>
+      <div class="ml-5"><%= render "public/searches/search" %></div>
       <!-- ナビゲーション要素の追加 -->
       <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarNavDropdown"
@@ -20,34 +21,34 @@
           <!-- ユーザーがログインしている＆会員の場合に表示 -->
           <% if user_signed_in? %>
             <li>
-                <!--現在ログインしているユーザーのマイページ。-->
-                <%= link_to public_show_path, class: 'nav-link text-dark' do %>
-                  <i class="fa-regular fa-user"></i>
+              <!--現在ログインしているユーザーのマイページ。-->
+              <%= link_to public_show_path, class: 'nav-link text-dark' do %>
+                <i class="fa-regular fa-user"></i>
                   My Page
-                <% end %>
-              </li>
+              <% end %>
+            </li>
             <li>
               <%= link_to  public_posts_map_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-map-location-dot"></i>
-                MAP
+                  MAP
               <% end %>
             </li>
             <li>
               <%= link_to  new_public_post_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-paper-plane"></i>
-                Post
+                  Post
               <% end %>
             </li>
             <li>
               <%= link_to public_posts_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-cat"></i>
-                Cat's
+                  Cat's
               <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark', id:'logout_link' do %>
                 <i class="fas fa-sign-out-alt"></i>
-                Log out
+                  Log out
               <% end %>
             </li>
             <!-- ユーザーがログインしているかつ管理者の場合に表示 -->
@@ -55,31 +56,31 @@
             <li>
               <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-users"></i>
-                User's
+                  User's
               <% end %>
             </li>
             <li>
               <%= link_to admin_posts_map_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-map-location-dot"></i>
-                MAP
+                  MAP
               <% end %>
             </li>
             <li>
               <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
               <i class="fa-solid fa-tags"></i>
-                Genre's
+                  Genre's
               <% end %>
             </li>
             <li>
               <%= link_to admin_posts_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-cat"></i>
-                Cat's
+                  Cat's
               <% end %>
             </li>
             <li>
               <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-right-from-bracket"></i>
-                Log out
+                  Log out
               <% end %>
             </li>
           <!-- 未ログインの場合に表示 -->
@@ -87,31 +88,31 @@
             <li>
               <%= link_to about_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-fish"></i>
-                About
+                  About
               <% end %>
             </li>
             <li>
               <%= link_to public_posts_map_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-map-location-dot" style="margin-right: 5px;"></i>
-                MAP
+                  MAP
               <% end %>
             </li>
             <li>
               <%= link_to public_posts_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-cat"></i>
-                Cat's
+                  Cat's
               <% end %>
             </li>
             <li>
               <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-right-to-bracket" style="margin-right: 5px;"></i>
-                Log in
+                  Log in
               <% end %>
             </li>
             <li>
               <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-house-chimney" style="margin-right: 5px;"></i>
-                Sign up
+                  Sign up
               <% end %>
             </li>
           <% end %>

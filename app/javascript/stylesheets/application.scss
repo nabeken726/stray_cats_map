@@ -38,6 +38,7 @@
   margin-right: 55%;
 }
 
+// ロゴの下の文
 .ttl_read {
   font-size: 10px;
   padding-top: 0;
@@ -67,7 +68,7 @@ footer{
 .alert {
   margin-bottom: 0;
   position: relative;
-    top: 15px;
+  top: 15px;
 }
 
 // テーブル関連
@@ -79,12 +80,17 @@ table th {
   white-space: nowrap;
 }
 
-
+// 内容表示用
 .introduction {
   display: block;
   width: 300px;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 日付折り返し用
+.day {
   white-space: nowrap;
 }
 
@@ -97,12 +103,19 @@ h3 {
   background: linear-gradient(transparent 70%, #ffffc6 70%);
 }
 
+// カード関連
 .card {
   margin-top: 30px;
 }
 
 .card h2 {
-  
   display: inline-block;
   background: linear-gradient(transparent 70%, #ffffc6 70%);
+}
+
+// 入力必須マーク
+.required::after {
+  content: " *";
+  color: red;
+  vertical-align: middle;
 }

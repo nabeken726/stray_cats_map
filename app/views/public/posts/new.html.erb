@@ -11,9 +11,11 @@
       <h2>MAP</h2>
       <input id="address" type="textbox" value="東京都">
       <input type="button" value="行ってみる" onclick="codeAddress()">
-      <div id="display">ここに緯度経度が出ます。</div>
+      <!--turbolink原因か？-->
+      <div id="display">ここに緯度経度が出ます。※MAPから遷移してきた場合、正常に動作しない恐れがあります。<br>
+                        その場合はリロードしてください。</div>
       <div id="map"></div>
-
+      <!--tableをliで書き換える-->
       <table class="table">
         <tr>
           <th><%= f.label :猫の画像 %></th>
@@ -59,6 +61,7 @@
 <script>
 let map
 let geocoder
+// displayを取得する
 const display = document.getElementById('display')
 let marker
 

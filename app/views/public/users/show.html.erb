@@ -6,6 +6,7 @@
     </div>
     <div class="col-md-6" style="margin-top: 50px; text-align: center;">
       <table class="table table-inverse">
+        <!--tableをliで書き直す-->
         <tr>
           <th>プロフィールアイコン</th>
           <td><%= image_tag @user.get_image,class: "rounded-circle", size: "150x150" %></td>
@@ -18,13 +19,28 @@
           <th>メールアドレス</th>
           <td><%= @user.email %></td>
         </tr>
+        <tr>
+          <td>フォロー数: <%= @user.followings.count %></td>
+          <td>フォロワー数: <%= @user.followers.count %></td>
+        </tr>
+        <tr>
+          <!--現在ログインしているユーザーには出ないようにする。-->
+          <% unless current_user == @user %>
+          <!--フォローリンクテンプレート-->
+          <td><%= render "public/relationships/follow_set", user: @user %></td>
+          <% end %>
+        </tr>
       </table>
     </div>
+    <% if @user.name != "guestuser" %>
     <div class="col-md-3" style="margin-top: 50px; text-align: center;">
       <br>
       <br>
       <%= link_to "編集",edit_public_user_path(current_user.id),class: 'btn btn-success' %>
     </div>
+    <% end %>
   </div>
 </div>
+
+
 

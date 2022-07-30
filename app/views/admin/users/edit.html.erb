@@ -1,15 +1,15 @@
-
 <div class="container">
   <div class="row">
     <div class="col-md-3" style="text-align: center; margin-top: 50px;">
       <h2>User Edit</h2>
     </div>
     <div class="col-md-6" style="margin-top: 50px;">
-      <%= form_with model:@user, url:admin_user_path(@user.id) do |f| %>
+      <%= form_with model: [:admin, @user] do |f| %>
+      <!--tableをliで書き直す-->
       <table class="table table-inverse">
         <tr>
           <th>プロフィールアイコン</th>
-          <td><%= image_tag @user.get_image,class: "rounded-circle", size: "150x150" %></td>
+          <td><%= image_tag @user.get_image, class: "rounded-circle", size: "150x150" %></td>
         </tr>
         <tr>
           <th>ユーザーID</th>

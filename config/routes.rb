@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'genres/show'
-  end
+
   # ここはdeviseのルーティング
   # 会員用
   # URL /customers/sign_in ...
@@ -10,11 +8,21 @@ Rails.application.routes.draw do
     sessions: 'public/sessions',
   }
 
+  # エラーメッセージ後のリロード対策
+   devise_scope :user do
+    get '/users', to: 'public/registrations#new'
+  end
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions",
   }
+
+  # ゲストログイン用
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
 
   # ここからは通常のルーティング
   root to: 'public/homes#top'
@@ -23,12 +31,15 @@ Rails.application.routes.draw do
   get 'public/infos/hogo', as: :hogo
   get 'public/infos/nora', as: :nora
 
+  get 'public/ranks/cute_rank'
+  get 'public/ranks/look_rank'
+
   # 退会確認画面
   get 'public/users/:id/unsubscribe' => 'public/users#unsubscribe', as: 'unsubscribe'
   # 論理削除用のルーティング
   patch 'public/users/:id/withdrawal' => 'public/users#withdrawal', as: 'withdrawal'
 
-  # 仮ルーティングMAP用
+  #MAP用
   get 'admin/posts/map'
   get 'public/posts/map'
   get 'public/posts/my_index'
@@ -44,18 +55,36 @@ Rails.application.routes.draw do
 
   # 会員側
   namespace :public do
-    resources :homes, only: [:top, :about]
+    resources :homes, only: [:top, :about] # %i(top about)
     resources :genres, only: [:index]
     resources :posts do
       # 見た、かわいいボタン用
       resources :looks, only: [:create, :destroy]
       resources :cutes, only: [:create, :destroy]
+      resources :contacts, only: [:new, :create]
+      member do
+        get :cutes
+        get :looks
+      end
       # コメント用
       resources :comments, only: [:create, :destroy]
     end
-    resources :users, except: [:index, :show]
+    resources :users, except: [:index, :show] do
+      # フォロー、フォロワー用
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'public/relationships#followings', as: 'followings'
+      get 'followers' => 'public/relationships#followers', as: 'followers'
+    end
+    # お問合せ用
+    resources :contacts, only: [:new, :create]
+    # 検索用
+    get "search" => "searches#search_result"
+    # ソート用
+    get 'sort' => 'posts#sort_index'
     get 'users' => 'users#show', as: 'show'
-  end
+    end
+
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

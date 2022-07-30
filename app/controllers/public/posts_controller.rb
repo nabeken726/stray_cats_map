@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   # ログインしていないとshow,create 使用不可
-  before_action :authenticate_user!, only: [:show, :create, :my_index]
+  before_action :authenticate_user!, except: [:index, :map]
   # 自分の投稿
   def my_index
     @user = current_user
@@ -8,13 +8,38 @@ class Public::PostsController < ApplicationController
   end
 
   def index
+    @user = current_user
     @genres = Genre.all
     # 退会しているuserの投稿は取得しない
     @posts = Post.narrow_down.page(params[:page]).per(10)
   end
 
+  def sort_index
+    @genres = Genre.all
+    selection = params[:word]
+    if selection.blank?
+      flash[:notice] = "選択して下さい。"
+      # 前のページに戻す処理
+      redirect_back(fallback_location: root_path)
+    else
+      # newかoldの場合の記述
+      if selection == 'new' || selection == 'old'
+        @posts = Post.sort(selection).narrow_down.page(params[:page]).per(10)
+      else
+        # Kaminari.paginate_arrayで配列に対応してあげる
+        @posts = Kaminari.paginate_array(Post.other_sort(selection)).page(params[:page]).per(10)
+      end
+    end
+  end
+
   def show
-    @post = Post.find(params[:id])
+    # 削除したページに戻らないように
+    @post = Post.find_by(id: params[:id])
+    unless @post
+      redirect_to public_posts_path
+      # 処理を抜ける
+      return
+    end
     # コメント用
     @comment = Comment.new
     @comments = @post.comments
@@ -39,9 +64,8 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
-    @post.genre_id = params[:post][:genre_id]
+    # 引数に設定
+    @post = Post.initialize_with_association(post_params, current_user.id, params[:post][:genre_id])
     if @post.save
       flash[:notice] = "投稿しました。"
       redirect_to public_post_path(@post)
@@ -61,6 +85,20 @@ class Public::PostsController < ApplicationController
   def map
     @posts = Post.all
   end
+
+  # かわいい、見た機能の投稿一覧
+  def cutes
+    @user = User.find(params[:id])
+    cutes = Cute.where(user_id: @user.id).pluck(:post_id)
+    @cute_posts = Post.find(cutes)
+  end
+
+  def looks
+    @user = User.find(params[:id])
+    looks = Look.where(user_id: @user.id).pluck(:post_id)
+    @look_posts = Post.find(looks)
+  end
+
 
   private
 

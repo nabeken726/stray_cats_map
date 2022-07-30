@@ -1,12 +1,15 @@
 class Public::UsersController < ApplicationController
   # User関連はUserのみにするように
   before_action :authenticate_user!
+  before_action :ensure_guest_user, only: [:edit]
+
   def index
-    @users = User.all
+
   end
 
   def show
     @user = current_user
+    # @user = User.find(params[:id])
   end
 
   def edit
@@ -33,9 +36,18 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :image)
   end
+
+  # ログインしているユーザーがguestuserだったらeditさせない
+  def ensure_guest_user
+    if current_user.name == "guestuser"
+      redirect_to public_show_path, notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
+  end
+
 end

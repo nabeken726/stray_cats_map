@@ -5,6 +5,7 @@
     </div>
     <div class="col-md-6" style="margin-top: 50px;">
     <table class="table table-inverse">
+      <!--tableをliで書き直す-->
       <tr>
         <th>プロフィールアイコン</th>
         <td><%= image_tag @user.get_image,class: "rounded-circle", size: "150x150" %></td>
@@ -22,13 +23,13 @@
         <td><%= @user.email %></td>
       </tr>
       <tr>
+        <th>登録日</th>
+        <td><%= l @user.created_at, format: :short %></td>
+      </tr>
+      <tr>
         <th>ユーザーステータス</th>
         <!--ステータスの記述を行う。-->
-        <% if @user.is_deleted == false %>
-            <td>有効</td>
-        <% else %>
-            <td>退会</td>
-        <% end %>
+        <td><%= user_status(@user) %></td>
       </tr>
     </table>
     </div>
@@ -36,7 +37,7 @@
       <table>
         <tr>
           <td>
-            <%= link_to "編集",edit_admin_user_path(@user),class: 'btn btn-success' %>
+            <%= link_to "編集", edit_admin_user_path(@user), class: 'btn btn-success' %>
           </td>
         </tr>
         <br>
