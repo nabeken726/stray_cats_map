@@ -9,8 +9,10 @@ class Public::ContactsController < ApplicationController
     if @contact.save
       # メールを送信するための記述
       ContactMailer.contact_mail(@contact, current_user).deliver
-      redirect_to root_path, notice: 'お問い合わせ内容を送信しました。'
+      flash[:notice] = 'お問い合わせ内容を送信しました。'
+      redirect_to root_path
     else
+      flash[:alert] =  'お問合せ内容を送信できませんでした。'
       render :new
     end
   end

@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'relationships/followings'
-    get 'relationships/followers'
-  end
-  namespace :public do
-    get 'genres/show'
-  end
+
   # ここはdeviseのルーティング
   # 会員用
   # URL /customers/sign_in ...
@@ -13,6 +7,11 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions',
   }
+
+  # エラーメッセージ後のリロード対策
+   devise_scope :user do
+    get '/users', to: 'public/registrations#new'
+  end
 
   # 管理者用
   # URL /admin/sign_in ...
@@ -84,6 +83,8 @@ Rails.application.routes.draw do
     get 'sort' => 'posts#sort_index'
     get 'users' => 'users#show', as: 'show'
     end
+
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

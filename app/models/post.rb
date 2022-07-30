@@ -29,11 +29,17 @@ class Post < ApplicationRecord
       return all.order(created_at: :DESC)
     when 'old'
       return all.order(created_at: :ASC)
-      # sqlインジェクション
+    end
+  end
+
+  def self.other_sort(selection)
+    case selection
+    # sqlインジェクション
+    # 退会者を弾くnarrow_downだとエラーが出ていたので直接入れて配列として持ってくる
     when 'cutes'
-      return find(Cute.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+      return find(Cute.group(:post_id).where.not(user_id: User.where(is_deleted: true).ids).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
     when 'looks'
-      return find(Look.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+      return find(Look.group(:post_id).where.not(user_id: User.where(is_deleted: true).ids).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
     end
   end
 

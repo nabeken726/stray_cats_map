@@ -22,7 +22,13 @@ class Public::PostsController < ApplicationController
       # 前のページに戻す処理
       redirect_back(fallback_location: root_path)
     else
-      @posts = Post.sort(selection).narrow_down.page(params[:page]).per(10)
+      # newかoldの場合の記述
+      if selection == 'new' || selection == 'old'
+        @posts = Post.sort(selection).narrow_down.page(params[:page]).per(10)
+      else
+        # Kaminari.paginate_arrayで配列に対応してあげる
+        @posts = Kaminari.paginate_array(Post.other_sort(selection)).page(params[:page]).per(10)
+      end
     end
   end
 

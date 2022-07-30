@@ -112,3 +112,10 @@ h3 {
   display: inline-block;
   background: linear-gradient(transparent 70%, #ffffc6 70%);
 }
+
+// 入力必須マーク
+.required::after {
+  content: " *";
+  color: red;
+  vertical-align: middle;
+}

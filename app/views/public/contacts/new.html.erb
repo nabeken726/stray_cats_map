@@ -7,11 +7,11 @@
       <div>
         <%= form_with model: @contact, url: public_contacts_path, local: true do |f| %>
         <div>
-          <%= f.label :お名前 %><br>
-          <%= f.text_field :name, placeholder: "お名前", size: "25x5" %>
+          <p class="required">お名前</p>
+          <%= f.text_field :name, placeholder: "お名前 ※ニックネームでも可", size: "25x5" %>
         </div>
         <div class="m-3">
-          <%= f.label :お問合せ内容 %><br>
+          <p class="required">お問合せ内容</p>
           <%= f.text_area :content, placeholder: "お問合せ内容を入力してください", size: "50x5" %>
         </div>
         <div>
