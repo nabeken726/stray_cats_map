@@ -82,6 +82,9 @@ Rails.application.routes.draw do
     # ソート用
     get 'sort' => 'posts#sort_index'
     get 'users' => 'users#show', as: 'show'
+
+     get 'users/:id' => 'users#edit', as: 'get_update'
+
     end
 
 

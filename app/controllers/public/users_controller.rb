@@ -20,7 +20,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       flash[:notice] = "更新しました。"
-      redirect_to public_show_path(@user)
+      redirect_to public_show_path
     else
       flash[:alert] = "更新に失敗しました。"
       render "edit"
