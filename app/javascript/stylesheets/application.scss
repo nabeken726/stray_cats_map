@@ -119,3 +119,17 @@ h3 {
   color: red;
   vertical-align: middle;
 }
+
+.line {
+  list-style: none;
+  display: flex;
+
+}
+
+.title {
+  font-weight: bold;
+}
+
+.content {
+  padding-left: 70px;
+}
