@@ -20,10 +20,6 @@
           <td><%= @user.email %></td>
         </tr>
         <tr>
-          <td>フォロー数: <%= @user.followings.count %></td>
-          <td>フォロワー数: <%= @user.followers.count %></td>
-        </tr>
-        <tr>
           <!--現在ログインしているユーザーには出ないようにする。-->
           <% unless current_user == @user %>
           <!--フォローリンクテンプレート-->
