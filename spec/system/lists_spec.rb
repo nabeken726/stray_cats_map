@@ -125,7 +125,7 @@ describe 'ユーザログイン前のテスト' do
         expect(page).to have_content 'User Sign up'
       end
       it 'imageフォームが表示される' do
-        expect(page).to have_field 'user[user_image_url]'
+        expect(page).to have_field 'user[image]'
       end
       it 'nameフォームが表示される' do
         expect(page).to have_field 'user[name]'
