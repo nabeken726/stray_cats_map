@@ -45,6 +45,11 @@ Stray Cat's MAP
 - JSライブラリ：jQuery
 - IDE：Cloud9
 - API : Google map
+- 
+
+## AWS構成図
+AWS構成図のスクリーンショットを載せる
+インフラ設計書も付随
 
 ## 使用素材
 - 「Photock」  　    https://www.photock.jp/list/k/%E9%87%8E%E8%89%AF%E7%8C%AB/
