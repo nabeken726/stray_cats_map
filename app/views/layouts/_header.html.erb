@@ -34,7 +34,8 @@
               <% end %>
             </li>
             <li>
-              <%= link_to  new_public_post_path, class: 'nav-link text-dark' do %>
+              <!--postのページだけturbolinksを切る-->
+              <%= link_to  new_public_post_path, class: 'nav-link text-dark',data: {"turbolinks"=>false} do %>
                 <i class="fa-solid fa-paper-plane"></i>
                   Post
               <% end %>
@@ -46,7 +47,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark', id:'logout_link' do %>
+              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark', id: 'logout_link' do %>
                 <i class="fas fa-sign-out-alt"></i>
                   Log out
               <% end %>
