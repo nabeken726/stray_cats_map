@@ -45,7 +45,9 @@ Stray Cat's MAP
 - JSライブラリ：jQuery
 - IDE：Cloud9
 - API : Google map
-- 
+
+##ER図
+![stray_cats_map](https://user-images.githubusercontent.com/103093739/184494102-3011c782-39ba-41e7-8658-8995d84a5118.png)
 
 ## AWS構成図
 AWS構成図のスクリーンショットを載せる
