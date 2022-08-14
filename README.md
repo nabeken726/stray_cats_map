@@ -39,7 +39,7 @@ Stray Cat's MAP
   - ジャンル作成機能
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Linux(Amazon Linux2)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
@@ -50,8 +50,7 @@ Stray Cat's MAP
 ![stray_cats_map](https://user-images.githubusercontent.com/103093739/184494102-3011c782-39ba-41e7-8658-8995d84a5118.png)
 
 ## AWS構成図
-AWS構成図のスクリーンショットを載せる
-インフラ設計書も付随
+![Untitled Diagram](https://user-images.githubusercontent.com/103093739/184525844-9c74f7e0-f5fa-49ab-9958-4c4314f421fd.jpg)
 
 ## 使用素材
 - 「Photock」  　    https://www.photock.jp/list/k/%E9%87%8E%E8%89%AF%E7%8C%AB/

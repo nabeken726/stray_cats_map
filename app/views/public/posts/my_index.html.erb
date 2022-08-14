@@ -26,7 +26,7 @@
               <td><%= image_tag post.image, size: '100x100' %></td>
               <td><%= link_to post.title, public_post_path(post) %></td>
               <td class="introduction"><%= post.introduction %></td>
-              <td class="day"><%= post.created_at.strftime('%Y/%m/%d') %></td>
+              <td class="day"><%= l post.created_at, format: :short %></td>
               <td><%= post.genre.genre %></td>
             </tr>
           <% end %>
