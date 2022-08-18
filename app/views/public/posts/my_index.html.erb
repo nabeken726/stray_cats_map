@@ -23,7 +23,7 @@
         <% if  @posts.present? %>
           <% @posts.each do |post| %>
             <tr>
-              <td><%= image_tag post.image, size: '100x100' %></td>
+              <td><%= image_tag post.image, class: "img-150-100" %></td>
               <td><%= link_to post.title, public_post_path(post) %></td>
               <td class="introduction"><%= post.introduction %></td>
               <td class="day"><%= l post.created_at, format: :short %></td>

@@ -1,4 +1,5 @@
 <div class="container">
+  <%= render "public/shared/error_messages", resource: @contact %>
   <div class="row">
     <div class="col-md-3" style="text-align: center;">
       <h2>Inquiry</h2>
@@ -8,11 +9,11 @@
         <%= form_with model: @contact, url: public_contacts_path, local: true do |f| %>
         <div>
           <p class="required">お名前</p>
-          <%= f.text_field :name, placeholder: "お名前 ※ニックネームでも可", size: "25x5" %>
+          <%= f.text_field :name, placeholder: "お名前 ※ニックネームでも可*50文字以内", size: "40x5" %>
         </div>
         <div class="m-3">
           <p class="required">お問合せ内容</p>
-          <%= f.text_area :content, placeholder: "お問合せ内容を入力してください", size: "50x5" %>
+          <%= f.text_area :content, placeholder: "お問合せ内容を入力してください*400文字以内", size: "50x5" %>
         </div>
         <div>
           <div class="mt-3">

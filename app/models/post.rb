@@ -9,14 +9,14 @@ class Post < ApplicationRecord
   has_many :looks,      dependent: :destroy
 
   # バリデーション
-  # タイトル20文字まで
-  validates :title,        presence: true, length: { maximum: 20 }
-  # 内容50文字まで
-  validates :introduction, presence: true, length: { maximum: 50 }
-  validates :genre,        presence: true
+  # タイトル50文字まで
+  validates :title,        presence: true, length: { maximum: 50 }
+  # 内容150文字まで
+  validates :introduction, presence: true, length: { maximum: 150 }
   validates :image,        presence: true
   validates :latitude,     presence: true
   validates :longitude,    presence: true
+  # validates :genre,        presence: true
 
   # 絞り込みのためのスコープ 退会済を弾く
   scope :narrow_down, -> { where.not(user_id: User.where(is_deleted: true).ids) }

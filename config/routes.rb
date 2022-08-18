@@ -28,9 +28,6 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get 'public/homes/about' => 'public/homes#about', as: 'about'
 
-  get 'public/infos/hogo', as: :hogo
-  get 'public/infos/nora', as: :nora
-
   get 'public/ranks/cute_rank'
   get 'public/ranks/look_rank'
 
@@ -54,7 +51,8 @@ Rails.application.routes.draw do
   end
 
   # 会員側
-  namespace :public do
+  # namespace :public do
+  scope module: :public do
     resources :homes, only: [:top, :about] # %i(top about)
     resources :genres, only: [:index]
     resources :posts do
@@ -82,8 +80,10 @@ Rails.application.routes.draw do
     # ソート用
     get 'sort' => 'posts#sort_index'
     get 'users' => 'users#show', as: 'show'
+    get 'users/:id' => 'users#edit', as: 'get_update'
 
-     get 'users/:id' => 'users#edit', as: 'get_update'
+    get 'infos/hogo'
+    get 'infos/nora'
 
     end
 

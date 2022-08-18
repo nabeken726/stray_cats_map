@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   # ログインしていないとshow,create 使用不可
   before_action :authenticate_user!, except: [:index, :map]
+  # before_action :correct_user,   only: [:edit, :update, :destroy]
   # 自分の投稿
   def my_index
     @user = current_user
@@ -47,6 +48,9 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    unless @post.user == current_user
+      redirect_to  new_public_post_path
+    end
   end
 
   def update
@@ -105,4 +109,11 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :introduction, :image, :comment, :genre_id, :latitude, :longitude)
   end
+
+  # def correct_user
+  #   @post = Post.find(params[:id])
+  #   unless @post.user == current_user
+  #     redirect_to  new_public_post_path
+  #   end
+  # end
 end
