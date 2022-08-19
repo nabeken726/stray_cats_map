@@ -4,8 +4,8 @@
     <div class="col-md-3" style="text-align: center;">
       <h2>My Cat's</h2>
       <div><%= image_tag @user.get_image,class: "rounded-circle", size: "150x150" %></div><br>
-      <p><%=link_to"Cute Cat's",cutes_public_post_path(@user), style: "font-family: Caveat; font-size: 20px;" %></p>
-      <p><%=link_to"Look Cat's",looks_public_post_path(@user), style: "font-family: Caveat; font-size: 20px;" %></p>
+      <p><%=link_to"Cute Cat's",cutes_post_path(@user), style: "font-family: Caveat; font-size: 20px;" %></p>
+      <p><%=link_to"Look Cat's",looks_post_path(@user), style: "font-family: Caveat; font-size: 20px;" %></p>
     </div>
     <div class="col-md-8" style="text-align: center; margin-top: 50px;">
       <table class='table table-hover table-inverse'>
@@ -24,7 +24,7 @@
           <% @posts.each do |post| %>
             <tr>
               <td><%= image_tag post.image, class: "img-150-100" %></td>
-              <td><%= link_to post.title, public_post_path(post) %></td>
+              <td><%= link_to post.title, post_path(post) %></td>
               <td class="introduction"><%= post.introduction %></td>
               <td class="day"><%= l post.created_at, format: :short %></td>
               <td><%= post.genre.genre %></td>

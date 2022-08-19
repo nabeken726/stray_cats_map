@@ -6,7 +6,7 @@
     </div>
     <div class="col-md-6", style="margin-top: 50px; text-align: center;">
       <div>
-        <%= form_with model: @contact, url: public_contacts_path, local: true do |f| %>
+        <%= form_with model: @contact, url: contacts_path, local: true do |f| %>
         <div>
           <p class="required">お名前</p>
           <%= f.text_field :name, placeholder: "お名前 ※ニックネームでも可*50文字以内", size: "40x5" %>

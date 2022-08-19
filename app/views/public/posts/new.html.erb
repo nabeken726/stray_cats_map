@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_with model: @post, url: public_posts_path do |f| %>
+  <%= form_with model: @post, url: posts_path do |f| %>
   <!--バリデーションエラーメッセージを乗せる-->
   <%= render "public/shared/error_messages", resource: @post %>
   <div class="row">

@@ -33,7 +33,7 @@ function initMap(){
     markerInfo(markers[<%= index %>],
     // 文章構成のための記述
     // 投稿の詳細を載せる
-    '<div><%= image_tag post.image, :size =>'300x200' %></div><div class="mt-1"><%= link_to post.title, public_post_path(post) %></div><div class="mt-1"  style=" white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 300px;"><%= post.introduction.gsub(/[\r\n]/,"") %></div><div class="mt-1"><%= post.genre.genre %></div>');
+    '<div><%= image_tag post.image, :size =>'300x200' %></div><div class="mt-1"><%= link_to post.title, post_path(post) %></div><div class="mt-1"  style=" white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 300px;"><%= post.introduction.gsub(/[\r\n]/,"") %></div><div class="mt-1"><%= post.genre.genre %></div>');
   <% end %>
 }
 

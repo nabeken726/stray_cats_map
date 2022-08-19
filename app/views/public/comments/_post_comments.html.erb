@@ -22,7 +22,7 @@
           <!--今ログインしているUserしか削除ボタンを表示させない。-->
           <!--adiminも全て削除できるように nilで判定で!で反転させる　-->
           <% if comment.user == current_user || !current_admin.blank? %>
-          <td><%= link_to "削除", public_post_comment_path(post, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %></td>
+          <td><%= link_to "削除", post_comment_path(post, comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %></td>
           <% end %>
         <% end %>
       <% else %>

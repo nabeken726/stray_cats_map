@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   #MAP用
   get 'admin/posts/map'
   get 'public/posts/map'
-  get 'public/posts/my_index'
+
 
   # 管理者側
   namespace :admin do
@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     resources :homes, only: [:top, :about] # %i(top about)
     resources :genres, only: [:index]
     resources :posts do
+      
       # 見た、かわいいボタン用
       resources :looks, only: [:create, :destroy]
       resources :cutes, only: [:create, :destroy]
@@ -82,9 +83,9 @@ Rails.application.routes.draw do
     get 'users' => 'users#show', as: 'show'
     get 'users/:id' => 'users#edit', as: 'get_update'
 
-    get 'infos/hogo'
-    get 'infos/nora'
-
+    get 'infos/hogo' => 'infos#hogo', as: 'hogo'
+    get 'infos/nora' => 'infos#nora', as: 'nora'
+    get 'posts/my_index' => 'posts#my_index', as: 'my_index'
     end
 
 
