@@ -18,6 +18,7 @@
           <td><%= @user.email %></td>
         </tr>
       </table>
+      <p><%= link_to "My Cat's", my_index_path, style: "font-family: Caveat; font-size: 20px;" %></p>
     </div>
     <% if @user.name != "guestuser" %>
     <div class="col-md-3" style="margin-top: 50px; text-align: center;">

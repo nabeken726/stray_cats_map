@@ -22,7 +22,7 @@
           <% if user_signed_in? %>
             <li>
               <!--現在ログインしているユーザーのマイページ。-->
-              <%= link_to show_path, class: 'nav-link text-dark' do %>
+              <%= link_to public_show_path, class: 'nav-link text-dark' do %>
                 <i class="fa-regular fa-user"></i>
                   My Page
               <% end %>

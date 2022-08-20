@@ -20,7 +20,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       flash[:notice] = "更新しました。"
-      redirect_to show_path
+      redirect_to public_show_path
     else
       flash[:alert] = "更新に失敗しました。"
       render "edit"
@@ -46,7 +46,7 @@ class Public::UsersController < ApplicationController
   # ログインしているユーザーがguestuserだったらeditさせない
   def ensure_guest_user
     if current_user.name == "guestuser"
-      redirect_to show_path, notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to public_show_path, notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
 

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # ここはdeviseのルーティング
   # 会員用
   # URL /customers/sign_in ...
@@ -55,8 +54,9 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :homes, only: [:top, :about] # %i(top about)
     resources :genres, only: [:index]
+    get 'posts/my_index' => 'posts#my_index', as: 'my_index'
     resources :posts do
-      
+
       # 見た、かわいいボタン用
       resources :looks, only: [:create, :destroy]
       resources :cutes, only: [:create, :destroy]
@@ -80,15 +80,17 @@ Rails.application.routes.draw do
     get "search" => "searches#search_result"
     # ソート用
     get 'sort' => 'posts#sort_index'
-    get 'users' => 'users#show', as: 'show'
+    # get 'users' => 'users#show', as: 'show'
     get 'users/:id' => 'users#edit', as: 'get_update'
 
     get 'infos/hogo' => 'infos#hogo', as: 'hogo'
     get 'infos/nora' => 'infos#nora', as: 'nora'
-    get 'posts/my_index' => 'posts#my_index', as: 'my_index'
     end
 
-
+  # ルーティングがマッチしないため
+  namespace :public do
+    get 'users' => 'users#show', as: 'show'
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
