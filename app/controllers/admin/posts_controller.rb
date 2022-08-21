@@ -1,5 +1,6 @@
 class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :correct_user,   only: [:edit, :destroy]
 
   # 管理者権限で使用する場合
   def map
@@ -23,17 +24,15 @@ class Admin::PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     flash[:alert] = "投稿を削除しました。"
     redirect_to admin_posts_path
   end
-end
+
 
   # もし管理者が更新に使う場合
   # def update
@@ -44,3 +43,10 @@ end
   #     render "edit"
   #   end
   # end
+
+  private
+
+  def correct_user
+    @post = Post.find(params[:id])
+  end
+end
