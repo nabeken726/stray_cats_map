@@ -2,7 +2,7 @@
     <p class="mr-2" style="font-family: Caveat; font-size: 20px;">Genre Search <i class="fa-solid fa-magnifying-glass"></i></p>
     <% genres.each do |genre| %>
       <div>
-        <%= link_to genre.genre, public_genres_path(genre: genre) %>(<%= genre.posts.count %>)
+        <%= link_to genre.genre, genres_path(genre: genre) %>(<%= genre.posts.count %>)
       </div>
     <% end %>
   </div>

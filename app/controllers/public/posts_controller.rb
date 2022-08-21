@@ -1,6 +1,8 @@
 class Public::PostsController < ApplicationController
   # ログインしていないとshow,create 使用不可
   before_action :authenticate_user!, except: [:index, :map]
+  before_action :correct_user,   only: [:edit, :update, :destroy]
+
   # 自分の投稿
   def my_index
     @user = current_user
@@ -36,7 +38,7 @@ class Public::PostsController < ApplicationController
     # 削除したページに戻らないように
     @post = Post.find_by(id: params[:id])
     unless @post
-      redirect_to public_posts_path
+      redirect_to posts_path
       # 処理を抜ける
       return
     end
@@ -46,17 +48,21 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       flash[:notice] = "更新しました。"
-      redirect_to public_post_path(@post)
+      redirect_to post_path(@post)
     else
       render "edit"
     end
+  end
+
+  def destroy
+    @post.destroy
+    flash[:alert] = "投稿を削除しました。"
+    redirect_to posts_path
   end
 
   def new
@@ -68,19 +74,13 @@ class Public::PostsController < ApplicationController
     @post = Post.initialize_with_association(post_params, current_user.id, params[:post][:genre_id])
     if @post.save
       flash[:notice] = "投稿しました。"
-      redirect_to public_post_path(@post)
+      redirect_to post_path(@post)
     else
       flash[:alert] = "投稿できませんでした。"
       render "new"
     end
   end
 
-  def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-    flash[:alert] = "投稿を削除しました。"
-    redirect_to public_posts_path
-  end
 
   def map
     @posts = Post.all
@@ -104,5 +104,13 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :introduction, :image, :comment, :genre_id, :latitude, :longitude)
+  end
+
+  def correct_user
+    @post = Post.find(params[:id])
+    unless @post.user == current_user
+      flash[:notice] = "不正な操作を検知しました。"
+      redirect_to  new_post_path
+    end
   end
 end

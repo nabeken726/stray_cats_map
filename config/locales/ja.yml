@@ -2,6 +2,16 @@ ja:
   activerecord:
     # 追加
     attributes:
+      contact:
+        name: お名前
+        content: お問合せ情報
+      post:
+        title: タイトル
+        introduction: 内容
+        image: 猫の画像
+        genre: ジャンル
+        latitude: 緯度
+        longitude: 経度
       user:
         name: ニックネーム
         email: メールアドレス

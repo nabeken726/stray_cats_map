@@ -35,13 +35,13 @@
             </li>
             <li>
               <!--postのページだけturbolinksを切る-->
-              <%= link_to  new_public_post_path, class: 'nav-link text-dark',data: {"turbolinks"=>false} do %>
+              <%= link_to  new_post_path, class: 'nav-link text-dark',data: {"turbolinks"=>false} do %>
                 <i class="fa-solid fa-paper-plane"></i>
                   Post
               <% end %>
             </li>
             <li>
-              <%= link_to public_posts_path, class: 'nav-link text-dark' do %>
+              <%= link_to posts_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-cat"></i>
                   Cat's
               <% end %>
@@ -99,7 +99,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to public_posts_path, class: 'nav-link text-dark' do %>
+              <%= link_to posts_path, class: 'nav-link text-dark' do %>
                 <i class="fa-solid fa-cat"></i>
                   Cat's
               <% end %>

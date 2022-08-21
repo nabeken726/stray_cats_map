@@ -120,3 +120,15 @@ h3 {
   vertical-align: middle;
 }
 
+// 投稿の縦横比を保つため
+.img-300-200{
+  width: 300px;
+  height: 200px;
+  object-fit: cover; // or contain
+}
+
+.img-150-100{
+  width: 150px;
+  height: 100px;
+  object-fit: cover; // or contain
+}

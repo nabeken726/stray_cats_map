@@ -10,7 +10,7 @@
       <table class="table table-inverse">
         <tr>
           <th>画像</th>
-          <td><%= image_tag @post.image, size: '300x200' %></td>
+          <td><%= image_tag @post.image, class: "img-300-200" %></td>
         </tr>
         <tr>
           <th>タイトル</th>
@@ -42,8 +42,8 @@
 
     <div class="col-md-3" style="text-align: center;">
       <% if @post.user == current_user %>
-      <%= link_to "編集",edit_public_post_path,class: 'btn btn-success' %><br><br>
-      <%= link_to '削除', public_post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？', class: 'btn-sm btn-danger' }, class: "btn btn-sm btn-danger"%>
+      <%= link_to "編集",edit_post_path,class: 'btn btn-success' %><br><br>
+      <%= link_to '削除', post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？', class: 'btn-sm btn-danger' }, class: "btn btn-sm btn-danger"%>
       <% end %>
     </div>
   </div>

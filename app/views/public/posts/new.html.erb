@@ -1,5 +1,7 @@
 <div class="container">
-  <%= form_with model: @post, url: public_posts_path do |f| %>
+  <%= form_with model: @post, url: posts_path do |f| %>
+  <!--バリデーションエラーメッセージを乗せる-->
+  <%= render "public/shared/error_messages", resource: @post %>
   <div class="row">
     <div class="col-md-3" style="text-align: center;">
       <h2>Cat Post's</h2>
@@ -21,11 +23,11 @@
         </tr>
         <tr>
           <th><%= f.label :タイトル %></th>
-          <td><%= f.text_field :title %></td>
+          <td><%= f.text_field :title, placeholder: "*50文字以内" %></td>
         </tr>
         <tr>
           <th><%= f.label :内容 %></th>
-          <td><%= f.text_area :introduction,size: "25x5" %></td>
+          <td><%= f.text_area :introduction, size: "25x5", placeholder: "*150文字以内" %></td>
         </tr>
         <tr>
           <th><%= f.label :ジャンル %></th>

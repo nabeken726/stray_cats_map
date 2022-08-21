@@ -9,7 +9,7 @@
         <% if user_signed_in? %>
         <li><%= link_to "野良猫の接し方", nora_path %></li>
         <li><%= link_to "迷い猫の保護の仕方", hogo_path %></li>
-        <li><%= link_to "お問合せ",new_public_contact_path( user_id: current_user.id ) %></li>
+        <li><%= link_to "お問合せ",new_contact_path( user_id: current_user.id ) %></li>
         <!-- ユーザーがログインしているかつ管理者の場合に表示 -->
         <% elsif admin_signed_in? %>
           <li>管理者ログイン中</li>
